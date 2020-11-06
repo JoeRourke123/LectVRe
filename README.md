@@ -1,6 +1,8 @@
 # LectVRe
 Immersive lecture experience from the comfort of your bedroom...
 
+I'm very impressed by this name Joseph :p
+
 ## Useful Links
 * https://hackpsu-fall-2020.devpost.com/ (DevPost for hackathon)
 * https://developer.vuplex.com/webview/overview (Browser for inside unity)
