@@ -1,2 +1,2 @@
-# LecVR
+# LectVRe
 Immersive lecture experience from the comfort of your bedroom...
