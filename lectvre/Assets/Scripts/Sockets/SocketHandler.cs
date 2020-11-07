@@ -1,110 +1,127 @@
-using System;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using System.Linq;
+using NativeWebSocket;
+using System.Collections.Generic;
 
-public class SocketHandler
+public class SocketHandler : MonoBehaviour
 {
-    private ClientWebSocket ws;
-    private Uri serverUri;
-    private string serverURL = "";
-    private UInt64 MAXSIZE = 2048;
-    private int TIMEOUT = 12;
-    private static int TOTAL_TIMEOUT = 12;
-
-    private readonly object sendLock = new object();
-    private readonly object receiveLock = new object();
+    private WebSocket ws;
+    private string serverURL = "ws://192.168.0.24:8000/ws/";
+    private static float INTERVAL = 0.05f;
+    private string userId;
+    private string roomId = "db1f5";
+    private string name = "Fuck You";
+    private Dictionary<string, UserData> users = new Dictionary<string, UserData>();
+    public GameObject userObject;
     
     // Start is called before the first frame update
-    public SocketHandler(string url)
+    async void Start()
     {
-        ws = new ClientWebSocket();
-        serverURL = url;
-        serverUri = new Uri(this.serverURL);
-    }
+        ws = new WebSocket(serverURL);
 
-    public async Task close()
-    {
-        Debug.Log("Closing...");
-        await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "Object Destroyed", CancellationToken.None);
-        Debug.Log("Connect status: " + ws.State);
-        return;
-    }
-
-    public async Task Connect()
-    {
-        Debug.Log("Connecting...");
-        if(ws.State == WebSocketState.Aborted) {
-            ws = new ClientWebSocket();
-        }
-
-        for (; TIMEOUT > 0 && ws.State != WebSocketState.Open; TIMEOUT--)
+        ws.OnOpen += () => 
         {
-            await ws.ConnectAsync(serverUri, CancellationToken.None);
-            Task.Delay(100).Wait(); 
-        }
+            Debug.Log("Connected");
+        };
 
-        Debug.Log("Connect status: " + ws.State);
-        if(ws.State != WebSocketState.Open) {
-            throw new TimeoutException();
-        }
+        ws.OnError += (e) => 
+        {
+            Debug.Log("Error: " + e);
+        };
 
-        TIMEOUT = TOTAL_TIMEOUT;
+        ws.OnClose += (e) => 
+        {
+            Debug.Log("Connection Closed");
+        };
+
+        ws.OnMessage += (bytes) =>
+        {
+            Receive(bytes);
+        };
+        ws.Connect();
+        while(ws.State != WebSocketState.Open);
+        await JoinRoom();
+    }
+    void Update()
+    {
+        #if !UNITY_WEBGL || UNITY_EDITOR
+            ws.DispatchMessageQueue();
+        #endif
+    }
+    private async Task JoinRoom() {
+        Debug.Log("Joining Room...");
+        await Send(new MainMessage("join", new UserMessage(roomId, name, "join", new MinifigureData(1, 1, 1, 1 ,1, 1))));
+        Debug.Log("Roomed Joined");
+        InvokeRepeating("SendPosition", 0.02f, INTERVAL);
         return;
     }
-
-    public async Task Send(string message)
+    private async void SendPosition()
     {
-        Task task;
-        lock(sendLock) {
-            checkStatus();
-            byte[] buffer = Encoding.Unicode.GetBytes(message);
-            ArraySegment<Byte> msg = new ArraySegment<Byte>(buffer);
-            try
-            {
-                Debug.Log("Sending: " + msg);
-                task = ws.SendAsync(msg, WebSocketMessageType.Text, true, CancellationToken.None);
-                task.Wait();
-            }
-            catch(Exception e) 
-            {
-                Debug.Log(e);
-            }
+        Message msg = new Message(
+            Camera.main.transform.position.x,
+            Camera.main.transform.position.y,
+            Camera.main.transform.position.z,
+            Camera.main.transform.eulerAngles.y,
+            new MinifigureData(0,0,0,0,0,0)
+        );
+        await Send(new MainMessage("position", msg));
+    }
+
+    private async Task Send(IMessageInterface message) {
+        if(ws.State == WebSocketState.Open) 
+        {
+            await ws.SendText(message.toJson());
+            Debug.Log("Message Sent: " + message.toJson());
         }
         return;
     }
+    private IMessageInterface Receive(byte[] bytes) {
+        Debug.Log("Bytes: " + bytes);
+        string message = System.Text.Encoding.UTF8.GetString(bytes);
+        Debug.Log("OnMessage! " + message);
 
-    public async Task<RecMessage> Receive()
-    {
-        ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[MAXSIZE]);
-        RecMessage message = new RecMessage();
-        Task task;
-        lock(receiveLock) {
-            checkStatus();
-            try
-            {
-                task =  ws.ReceiveAsync(buffer, CancellationToken.None);
-                string str = System.Text.Encoding.Default.GetString(buffer.ToArray());
-                JsonUtility.FromJsonOverwrite(str, message);
-                Debug.Log("Recieved: " + message);
-                task.Wait();
+        MainMessage mainMessage = JsonUtility.FromJson<MainMessage>(message);
+        switch(mainMessage.type) {
+            case "position":
+            RecMessage rm = JsonUtility.FromJson<RecMessage>(mainMessage.message);
+            mainMessage.finalMessage = rm;
+            UpdateUsers(rm);
+            break;
+            case "join":
+            UserMessage um = JsonUtility.FromJson<UserMessage>(mainMessage.message);
+            mainMessage.finalMessage = um;
+            break;
+            case "create_room":
+            RoomJoin rj = JsonUtility.FromJson<RoomJoin>(mainMessage.message);
+            mainMessage.finalMessage = rj;
+            break;
+        }
+        return mainMessage;
+    }
+    private void UpdateRoom(UserMessage message) {
+        this.userId = message.user;
+        this.roomId = message.roomId;
+    }
+    private void UpdateUsers(RecMessage message) {
+        if(message.id != this.userId) {
+            if(users.ContainsKey(message.id)) {
+                GameObject user = users[message.id].gameObject;
+                user.transform.position = message.toVector3();
+
+                Vector3 newRotation = user.transform.eulerAngles;
+                newRotation.y = message.getAngle();
+                user.transform.eulerAngles = newRotation;
             }
-            catch(Exception e) 
-            {
-                Debug.Log(e);
-            }        
-        }
-        return message; 
-    }
-
-    private async void checkStatus() {
-        if(ws.State != WebSocketState.Open) {
-            await Connect();
+            else {
+                users.Add(message.id, new UserData(message.id, message.name, Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform)));
+            }
         }
     }
+    private async void OnApplicationQuit()
+    {
+        await ws.Close();
+    }
+    
 }
 
 

@@ -1,26 +1,23 @@
 ﻿using System;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
-using System.Linq;
-
+/**
+* Class for containing data for repeatably sending the player position
+**/
 [Serializable]
-public class Message
+public class Message : IMessageInterface
 {
     public float x;
     public float y;
     public float z;
     public float r;
-    public string type;
+    public MinifigureData minifigureData;
 
-    public Message(float x, float y, float z, float r, string type) {
+    public Message(float x, float y, float z, float r, MinifigureData minifigureData) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.r = r;
-        this.type = type;
+        this.minifigureData = minifigureData;
     }
 
     public Message() {
@@ -28,7 +25,7 @@ public class Message
     }
 
     public string toJson() {
-        return $"{{\"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"type\":\"{type}\"}}";
+        return $"{{\"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"minifig\":{minifigureData.toJson()}}}";
     }
 
     public Vector3 toVector3() {
