@@ -12,6 +12,7 @@ using agora_gaming_rtc;
 public class AgoraChat : MonoBehaviour
 {
     public string AppID = "499ffa8267e545ad995b67464403920b";
+    //006499ffa8267e545ad995b67464403920bIAAb8u60d1Rgf18Pj53jLh9GAj2POgnDOW+RrZoRlF3m2YamEDYAAAAAEABqf2ZwAtunXwEAAQAB26df
     public string ChannelName;
 
     VideoSurface myView;
