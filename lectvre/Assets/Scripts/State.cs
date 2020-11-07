@@ -1,3 +1,4 @@
 	public class State
 	{
-		public bool characterHasJoined;}
+		public bool characterHasJoined;
+	}
