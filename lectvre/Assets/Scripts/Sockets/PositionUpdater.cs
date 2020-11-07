@@ -45,7 +45,6 @@ public class PositionUpdater : MonoBehaviour
         );
 
         await sh.Send(msg.toJson());
-        Message message = await sh.Receive();
     }
 
     async void ReceiveLoop()
