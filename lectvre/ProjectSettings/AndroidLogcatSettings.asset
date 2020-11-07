@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
     "m_SelectedDeviceId": "43cada259805",
     "m_SelectedPackage": {
         "deviceId": "43cada259805",
         "name": "space.lectvre",
         "processId": 15764,
+=======
+    "m_SelectedDeviceId": "9889db364f4f4f3851",
+    "m_SelectedPackage": {
+        "deviceId": "9889db364f4f4f3851",
+        "name": "space.lectvre",
+        "processId": 541,
+>>>>>>> b9f1167127d8fd169bb5e0110326b2a4f01ead5b
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -41,6 +49,7 @@
         {
             "deviceId": "43cada259805",
             "name": "space.lectvre",
+<<<<<<< HEAD
             "processId": 10330,
             "exited": true
         },
@@ -79,6 +88,10 @@
             "name": "space.lectvre",
             "processId": 15764,
             "exited": false
+=======
+            "processId": 29164,
+            "exited": true
+>>>>>>> b9f1167127d8fd169bb5e0110326b2a4f01ead5b
         },
         {
             "deviceId": "9889db364f4f4f3851",
@@ -139,6 +152,15 @@
             "name": "space.lectvre",
             "processId": 27872,
             "exited": false
+<<<<<<< HEAD
+=======
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 541,
+            "exited": false
+>>>>>>> b9f1167127d8fd169bb5e0110326b2a4f01ead5b
         }
     ],
     "m_Tags": {
@@ -164,12 +186,21 @@
                 "m_Selected": false
             },
             {
+<<<<<<< HEAD
                 "m_Name": "CRASH",
                 "m_Selected": false
             },
             {
                 "m_Name": "Unity",
                 "m_Selected": true
+=======
+                "m_Name": "Unity",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+>>>>>>> b9f1167127d8fd169bb5e0110326b2a4f01ead5b
             }
         ]
     },

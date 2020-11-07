@@ -38,5 +38,13 @@ public class Message
     public float getAngle() {
         return r;
     }
+    
+    public Vector3 toEuelerAngle() {
+        return new Vector3(0, r, 0);
+    }
+
+    public Quaternion toQuaternion() {
+        return Quaternion.Euler(0, r, 0);
+    }
 }
     

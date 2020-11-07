@@ -12,7 +12,11 @@ public class SocketHandler
     private Uri serverUri;
     private string serverURL = "";
     private UInt64 MAXSIZE = 2048;
-    private static int TIMEOUT = 12;
+    private int TIMEOUT = 12;
+    private static int TOTAL_TIMEOUT = 12;
+
+    private readonly object sendLock = new object();
+    private readonly object receiveLock = new object();
     
     // Start is called before the first frame update
     public SocketHandler(string url)
@@ -24,83 +28,82 @@ public class SocketHandler
 
     public async Task close()
     {
+        Debug.Log("Closing...");
         await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "Object Destroyed", CancellationToken.None);
+        Debug.Log("Connect status: " + ws.State);
         return;
     }
 
     public async Task Connect()
     {
-        await ws.ConnectAsync(serverUri, CancellationToken.None);
-        Debug.Log("Connect status: " + ws.State);
-        if(ws.State != WebSocketState.Open) await ReConnect();
-        return;
-    }
+        Debug.Log("Connecting...");
+        if(ws.State == WebSocketState.Aborted) {
+            ws = new ClientWebSocket();
+        }
 
-    public async Task ReConnect()
-    {
-        await ws.CloseAsync(WebSocketCloseStatus.InternalServerError, "Need to close connection before reconnection", CancellationToken.None);
-        for (int i = 0; i < TIMEOUT && ws.State != WebSocketState.Open; i++)
+        for (; TIMEOUT > 0 && ws.State != WebSocketState.Open; TIMEOUT--)
         {
-            Task.Delay(100).Wait(); 
             await ws.ConnectAsync(serverUri, CancellationToken.None);
-        }        
+            Task.Delay(100).Wait(); 
+        }
+
+        Debug.Log("Connect status: " + ws.State);
+        if(ws.State != WebSocketState.Open) {
+            throw new TimeoutException();
+        }
+
+        TIMEOUT = TOTAL_TIMEOUT;
         return;
     }
 
     public async Task Send(string message)
     {
-        byte[] buffer = Encoding.Unicode.GetBytes(message);
-        ArraySegment<Byte> msg = new ArraySegment<Byte>(buffer);
-        Debug.Log("Message: " + msg);
-        try
-        {
-            await ws.SendAsync(msg, WebSocketMessageType.Text, true, CancellationToken.None);
-            Debug.Log("Buffer: " + buffer);
+        Task task;
+        lock(sendLock) {
+            checkStatus();
+            byte[] buffer = Encoding.Unicode.GetBytes(message);
+            ArraySegment<Byte> msg = new ArraySegment<Byte>(buffer);
+            try
+            {
+                Debug.Log("Sending: " + msg);
+                task = ws.SendAsync(msg, WebSocketMessageType.Text, true, CancellationToken.None);
+                task.Wait();
+            }
+            catch(Exception e) 
+            {
+                Debug.Log(e);
+            }
         }
-        catch(WebSocketException e) {
-            Debug.Log(e);
-            await ReConnect();
-        }
-        catch (ObjectDisposedException e)
-        {
-            Debug.Log(e);
-            await ReConnect();
-        }
-        catch (InvalidOperationException e)
-        {
-            Debug.Log(e);
-            await ReConnect();
-         }
-         return;
+        return;
     }
 
-    public async Task<Message> Receive()
+    public async Task<RecMessage> Receive()
     {
         ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[MAXSIZE]);
-        Message message = new Message();
-        try
-        {
-            Debug.Log("Recieving Data");
-            await ws.ReceiveAsync(buffer, CancellationToken.None);
-            string str = System.Text.Encoding.Default.GetString(buffer.ToArray());
-            JsonUtility.FromJsonOverwrite(str, message);
+        RecMessage message = new RecMessage();
+        Task task;
+        lock(receiveLock) {
+            checkStatus();
+            try
+            {
+                task =  ws.ReceiveAsync(buffer, CancellationToken.None);
+                string str = System.Text.Encoding.Default.GetString(buffer.ToArray());
+                JsonUtility.FromJsonOverwrite(str, message);
+                Debug.Log("Recieved: " + message);
+                task.Wait();
+            }
+            catch(Exception e) 
+            {
+                Debug.Log(e);
+            }        
         }
-        catch(WebSocketException e) 
-        {
-            Debug.Log(e);
-            await ReConnect();
+        return message; 
+    }
+
+    private async void checkStatus() {
+        if(ws.State != WebSocketState.Open) {
+            await Connect();
         }
-        catch (ObjectDisposedException e)
-        {
-            Debug.Log(e);
-            await ReConnect();
-        }
-        catch (InvalidOperationException e) 
-        {
-            Debug.Log(e);
-            await ReConnect();
-        }
-        return message;
     }
 }
 
