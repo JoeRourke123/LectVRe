@@ -1,23 +1,42 @@
-﻿public class Message
-{
-    private float x;
-    private float y;    
-    private float z;
-    private float r;    
-    private string id;
-    private string type;
+﻿using System;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using UnityEngine;
+using System.Linq;
 
-    public Message(float x, float y, float z, float r, string id, string type) {
+[Serializable]
+public class Message
+{
+    public float x;
+    public float y;
+    public float z;
+    public float r;
+    public string type;
+
+    public Message(float x, float y, float z, float r, string type) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.r = r;
-        this.id = id;
         this.type = type;
     }
 
     public Message() {
-        
+
+    }
+
+    public string toJson() {
+        return $"{{\"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"type\":\"{type}\"}}";
+    }
+
+    public Vector3 toVector3() {
+        return new Vector3(x, y, z);
+    }
+
+    public float getAngle() {
+        return r;
     }
 }
     
