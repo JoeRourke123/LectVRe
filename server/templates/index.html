@@ -4,20 +4,47 @@
     let s = new WebSocket("ws://192.168.0.24:8000/ws/");
     s.onopen = () => {
         alert("OPENED");
-        s.send(JSON.stringify({"type": "create_group", "name": "Joe Rourke"}));
+
+        s.send(JSON.stringify({
+            "type": "join",
+            "message": {
+                "name": prompt("Name"),
+                "room": "db1f5"
+            }
+        }));
+
+        setTimeout(() => {
+            let i = 0;
+            let int = setInterval(() => {
+                if (i++ > 50) {
+                    clearInterval(int);
+                }
+
+                s.send(JSON.stringify({
+                    "type": "position",
+                    "message": {
+                        "x": Math.floor((Math.random() * 100) + 1),
+                        "y": Math.floor((Math.random() * 100) + 1),
+                        "z": Math.floor((Math.random() * 100) + 1),
+                        "r": Math.floor((Math.random() * 100) + 1),
+                    }
+                }));
+            }, 1000)
+        }, 4000);
     };
     s.onmessage = (d) => {
         console.log(d);
     };
 
-    let i = 0;
-    let int = setInterval(() => {
-        if(i++ > 5) {
-            clearInterval(int);
-        }
 
-        s.send(JSON.stringify({"type": "position", "x": 5, "y": 10, "z": 30}))
-    }, 50)
+    {#let i = 0;#}
+    {#let int = setInterval(() => {#}
+    {#    if(i++ > 5) {#}
+    {#        clearInterval(int);#}
+    {#    }#}
+    {##}
+    {#        s.send(JSON.stringify({"type": "position", "x": 5, "y": 10, "z": 30}))#}
+    {#    }, 50)#}
 </script>
 </body>
 </html>

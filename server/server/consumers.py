@@ -16,9 +16,16 @@ class LectvreConsumer(AsyncWebsocketConsumer):
     user_room = {}
 
     async def connect(self):
-        user: AnonymousUser = self.scope['user']
 
-        self.users[user]: Student = Student(id=self.gen_user_id())
+        scope_user = None
+        for header in self.scope['headers']:
+            if header[0] == b'sec-websocket-key':
+                scope_user = str(header[1].decode('utf-8'))
+
+        if "db1f5" not in self.rooms:
+            self.rooms["db1f5"] = Lecture(id="db1f5", lecturer=Lecturer(id=self.gen_user_id(), name="Name"))
+
+        self.users[scope_user]: Student = Student(id=self.gen_user_id())
 
         await self.accept()
 
@@ -43,7 +50,12 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         # Leave room group
-        user = self.users[self.scope['user']]
+        scope_user = None
+        for header in self.scope['headers']:
+            if header[0] == b'sec-websocket-key':
+                scope_user = str(header[1].decode('utf-8'))
+
+        user = self.users[scope_user]
 
         if user.lecture:
             await self.channel_layer.group_send(
@@ -60,7 +72,7 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                 user.lecture.id,
                 self.channel_name
             )
-            for i in range(self.rooms[user.lecture.id].students):
+            for i in range(len(self.rooms[user.lecture.id].students)):
                 if self.rooms[user.lecture.id].students[i].id == user.id:
                     self.rooms[user.lecture.id].students.pop(i)
 
@@ -77,10 +89,16 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data: str):
-        print(text_data)
-        message = ast.literal_eval(str(text_data).replace('\x00',''))
+        scope_user = None
+        for header in self.scope['headers']:
+            if header[0] == b'sec-websocket-key':
+                scope_user = str(header[1].decode('utf-8'))
 
-        user: Student = self.users[self.scope['user']]
+        message = ast.literal_eval(str(text_data).replace('\x00', ''))
+        message['message']['type'] = message['type']
+        message = message['message']
+
+        user: Student = self.users[scope_user]
 
         if "type" not in message:
             return
@@ -90,6 +108,8 @@ class LectvreConsumer(AsyncWebsocketConsumer):
         return_data = {}
 
         if message['type'] == "join":
+            message['room'] = "db1f5"
+
             if message['room'] not in self.rooms:
                 return
             else:
@@ -97,7 +117,7 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                 self.user_room[user.id] = room
 
                 user_obj: Student = Student(id=user.id, seat=get_free_seat(room), lecture=room, **message)
-                self.users[user.id] = user_obj
+                self.users[scope_user] = user_obj
 
                 self.rooms[message['room']].students.append(user_obj)
 
@@ -109,31 +129,44 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                         'type': 'update',
                         'message': {
                             "type": "new_user",
-                            "user_id": user.id,
-                            "name": user_obj.name,
-                            "minifig": user_obj.minifig,
+                            "message": {
+                                "user": user.id,
+                                "name": user_obj.name,
+                                "seat": user_obj.seat,
+                                "minifig": user_obj.minifig,
+                            }
                         }
                     }
                 )
 
                 return_data = {
                     "type": "position",
-                    "user_id": user.id,
-                    "x": user_obj.position[0],
-                    "y": user_obj.position[1],
-                    "z": user_obj.position[2],
-                    "r": user_obj.position[3]
+                    "message": {
+                        "user": user_obj.id,
+                        "name": user_obj.name,
+                        "x": user_obj.position[0],
+                        "y": user_obj.position[1],
+                        "z": user_obj.position[2],
+                        "r": user_obj.position[3],
+                        "minifig": user_obj.minifig,
+                    }
                 }
-        elif message['type'] == "create_group":
+
+                print(return_data)
+        elif message['type'] == "create_room":
             user_obj: Lecturer = Lecturer(id=user.id, **message)
-            room: Lecture = Lecture(id=self.gen_user_id(), lecturer=user_obj)
+            room: Lecture = Lecture(id=self.gen_user_id()[0:5], lecturer=user_obj)
             user_obj.lecture = room
 
             self.rooms[room.id] = room
             self.user_room[user.id] = room.id
 
             return_data = {
-                "room_id": room.id,
+                "type": "create_room",
+                "message": {
+                    "room": room.id,
+                    "user": user.id,
+                }
             }
 
             await self.add_to_room(user_obj, room)
@@ -149,15 +182,19 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
             return_data = {
                 "type": "hand_up",
-                "user_id": user.id,
-                "hand_up": user.hand_up
+                "message": {
+                    "user": user.id,
+                    "hand_up": user.hand_up
+                }
             }
 
         elif message['type'] == "note_change":
             pass
         elif message['type'] == "position":
-            print(message)
-            return_data = {**message, "user_id": user.id}
+            user_obj = self.users[scope_user]
+            return_data = {**message, "user": user.id, "minifig": user_obj.minifig}
+
+        print("Response: " + str(return_data))
 
         # Send message to room group
         await self.channel_layer.group_send(
