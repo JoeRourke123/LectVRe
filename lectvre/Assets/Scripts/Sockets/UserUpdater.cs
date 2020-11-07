@@ -37,7 +37,7 @@ public class UserUpdater : MonoBehaviour
     {
         while (true)
         {
-            PlayerPosition player = await sh.Receive();
+            Message message = await sh.Receive();
         }
     }
     

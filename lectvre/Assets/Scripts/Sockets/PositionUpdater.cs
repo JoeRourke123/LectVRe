@@ -17,6 +17,7 @@ public class PositionUpdater : MonoBehaviour
     {
         sh = new SocketHandler("ws://192.168.0.24:8000/ws/");
         await sh.Connect();
+        await sh.Send("{\"type\": \"create_group\", \"name\": \"Joe Rourke\"}");
 
         InvokeRepeating("SendPosition", 0.02f, INTERVAL);
     }
@@ -39,11 +40,10 @@ public class PositionUpdater : MonoBehaviour
             Camera.main.transform.position.y,
             Camera.main.transform.position.z,
             Camera.main.transform.eulerAngles.y,
-            "position",
-            ""
+            "position"
         );
-        Debug.Log("JSON: " + JsonUtility.ToJson(msg));
-        await sh.Send(JsonUtility.ToJson(msg));
+
+        await sh.Send(msg.toJson());
         await sh.Receive();
     }
 }
