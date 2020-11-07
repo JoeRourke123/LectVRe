@@ -3,7 +3,6 @@ import ast
 import json
 import uuid
 
-from channels.auth import UserLazyObject
 from channels.generic.websocket import AsyncWebsocketConsumer
 from django.contrib.auth.models import AnonymousUser
 
@@ -44,33 +43,37 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         # Leave room group
-        user = self.users[self.scope['user']].id
+        user = self.users[self.scope['user']]
 
-        await self.channel_layer.group_send(
-            user.lecture.id,
-            {
-                'type': 'update',
-                'message': {
-                    "type": "left_room",
-                    "user_id": user.id,
+        if user.lecture:
+            await self.channel_layer.group_send(
+                user.lecture.id,
+                {
+                    'type': 'update',
+                    'message': {
+                        "type": "left_room",
+                        "user_id": user.id,
+                    }
                 }
-            }
-        )
+            )
+            await self.channel_layer.group_discard(
+                user.lecture.id,
+                self.channel_name
+            )
+            for i in range(self.rooms[user.lecture.id].students):
+                if self.rooms[user.lecture.id].students[i].id == user.id:
+                    self.rooms[user.lecture.id].students.pop(i)
 
         await self.channel_layer.group_discard(
             user.id,
             self.channel_name
         )
-        await self.channel_layer.group_discard(
-            user.lecture.id,
-            self.channel_name
-        )
 
-        del self.users[self.scope['user']]
-        del self.user_room[user.id]
-        for i in range(self.rooms[user.lecture.id].students):
-            if self.rooms[user.lecture.id].students[efe\oo]
+        if self.scope['user'] in self.users:
+            del self.users[self.scope['user']]
 
+        if user.id in self.user_room:
+            del self.user_room[user.id]
 
     # Receive message from WebSocket
     async def receive(self, text_data: str):
