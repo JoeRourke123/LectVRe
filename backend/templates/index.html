@@ -1,0 +1,16 @@
+<html>
+<body>
+<script type="text/javascript" charset="utf-8">
+    var socket = new WebSocket("0.0.0.0:5000");
+    socket.onopen = () => {
+        socket.send({
+            "type": "create_room",
+            "name": "Joe Rourke"
+        });
+    };
+    socket.onmessage = (d) => {
+        console.log(d);
+    };
+</script>
+</body>
+</html>
