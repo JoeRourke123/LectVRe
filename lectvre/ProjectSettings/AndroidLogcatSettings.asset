@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "R58N12F7E8W",
+    "m_SelectedDeviceId": "43cada259805",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "43cada259805",
+        "name": "space.lectvre",
+        "processId": 15764,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -41,31 +41,6 @@
         {
             "deviceId": "43cada259805",
             "name": "space.lectvre",
-            "processId": 3725,
-            "exited": true
-<<<<<<< HEAD
-        },
-        {
-            "deviceId": "43cada259805",
-            "name": "space.lectvre",
-            "processId": 4684,
-            "exited": true
-        },
-        {
-            "deviceId": "43cada259805",
-            "name": "space.lectvre",
-            "processId": 7124,
-            "exited": true
-        },
-        {
-            "deviceId": "43cada259805",
-            "name": "space.lectvre",
-            "processId": 8838,
-            "exited": true
-        },
-        {
-            "deviceId": "43cada259805",
-            "name": "space.lectvre",
             "processId": 10330,
             "exited": true
         },
@@ -73,6 +48,36 @@
             "deviceId": "43cada259805",
             "name": "space.lectvre",
             "processId": 11394,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 12970,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "com.android.launcher3",
+            "processId": 8148,
+            "exited": false
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 13879,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 14956,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 15764,
             "exited": false
         },
         {
@@ -134,8 +139,6 @@
             "name": "space.lectvre",
             "processId": 27872,
             "exited": false
-=======
->>>>>>> adb3c6ffa3d30f054c8cdabf6181bfc1f4b94278
         }
     ],
     "m_Tags": {
@@ -146,7 +149,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": true
+                "m_Selected": false
             },
             {
                 "m_Name": "",
@@ -161,13 +164,6 @@
                 "m_Selected": false
             },
             {
-<<<<<<< HEAD
-=======
-                "m_Name": "Unity",
-                "m_Selected": false
-            },
-            {
->>>>>>> adb3c6ffa3d30f054c8cdabf6181bfc1f4b94278
                 "m_Name": "CRASH",
                 "m_Selected": false
             },
@@ -178,7 +174,7 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 300.0,
+        "MemoryWindowHeight": 255.0,
         "MemoryWindowWidth": 170.0,
         "MemoryTypeEnabled": [
             true,
