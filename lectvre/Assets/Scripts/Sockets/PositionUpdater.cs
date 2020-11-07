@@ -10,12 +10,12 @@ using UnityEngine;
 public class PositionUpdater : MonoBehaviour
 {
     private SocketHandler sh;
-    private static float INTERVAL = 0.05f;
+    private static float INTERVAL = 0.1f;
     
     // Start is called before the first frame update
     async void Start()
     {
-        sh = new SocketHandler("");
+        sh = new SocketHandler("ws://192.168.0.24:8000/ws/");
         await sh.Connect();
 
         InvokeRepeating("SendPosition", 0.02f, INTERVAL);
@@ -34,13 +34,15 @@ public class PositionUpdater : MonoBehaviour
 
     async void SendPosition()
     {
-        Debug.Log(Camera.main.transform.position);
-        Message msg = new Message();
-        msg.x = Camera.main.transform.position.x;
-        msg.y = Camera.main.transform.position.y;
-        msg.z = Camera.main.transform.position.z;
-        msg.type = "position";
-        msg.id = "";
+        Message msg = new Message(
+            Camera.main.transform.position.x,
+            Camera.main.transform.position.y,
+            Camera.main.transform.position.z,
+            Camera.main.transform.eulerAngles.y,
+            "position",
+            ""
+        );
+        Debug.Log("JSON: " + JsonUtility.ToJson(msg));
         await sh.Send(JsonUtility.ToJson(msg));
         await sh.Receive();
     }
