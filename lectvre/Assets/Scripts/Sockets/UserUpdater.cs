@@ -11,7 +11,7 @@ public class UserUpdater : MonoBehaviour
 {
 
     private SocketHandler sh;
-    private static float INTERVAL = 0.05f;
+    private static float INTERVAL = 0.1f;
 
     // Start is called before the first frame update
     async void Start()

@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "9889db364f4f4f3851",
         "name": "space.lectvre",
-        "processId": 27872,
+        "processId": 541,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -102,6 +102,12 @@
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
             "processId": 27872,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 541,
             "exited": false
         }
     ],
