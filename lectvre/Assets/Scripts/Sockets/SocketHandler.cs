@@ -31,20 +31,18 @@ public class SocketHandler
     public async Task Connect()
     {
         await ws.ConnectAsync(serverUri, CancellationToken.None);
-        while (ws.State == WebSocketState.Connecting)
-        {
-            Debug.Log("Waiting to Connect...");
-        }
         Debug.Log("Connect status: " + ws.State);
+        if(ws.State != WebSocketState.Open) await ReConnect();
         return;
     }
 
     public async Task ReConnect()
     {
+        await ws.CloseAsync(WebSocketCloseStatus.InternalServerError, "Need to close connection before reconnection", CancellationToken.None);
         for (int i = 0; i < TIMEOUT && ws.State != WebSocketState.Open; i++)
         {
-            Task.Delay(50).Wait(); 
-            await Connect();
+            Task.Delay(100).Wait(); 
+            await ws.ConnectAsync(serverUri, CancellationToken.None);
         }        
         return;
     }
@@ -53,49 +51,56 @@ public class SocketHandler
     {
         byte[] buffer = Encoding.Unicode.GetBytes(message);
         ArraySegment<Byte> msg = new ArraySegment<Byte>(buffer);
+        Debug.Log("Message: " + msg);
         try
         {
             await ws.SendAsync(msg, WebSocketMessageType.Text, true, CancellationToken.None);
-            Debug.Log(buffer);
+            Debug.Log("Buffer: " + buffer);
         }
-        
+        catch(WebSocketException e) {
+            Debug.Log(e);
+            await ReConnect();
+        }
         catch (ObjectDisposedException e)
         {
-            e.ToString();
+            Debug.Log(e);
             await ReConnect();
         }
         catch (InvalidOperationException e)
         {
-             e.ToString();
-             await ReConnect();
+            Debug.Log(e);
+            await ReConnect();
          }
          return;
     }
 
-    public async Task<PlayerPosition> Receive()
+    public async Task<Message> Receive()
     {
         ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[MAXSIZE]);
-        PlayerPosition player = new PlayerPosition();
+        Message message = new Message();
         try
         {
+            Debug.Log("Recieving Data");
             await ws.ReceiveAsync(buffer, CancellationToken.None);
-            Debug.Log(buffer);
             string str = System.Text.Encoding.Default.GetString(buffer.ToArray());
-            JsonUtility.FromJsonOverwrite(str, player);
-            Debug.Log(player);
+            JsonUtility.FromJsonOverwrite(str, message);
         }
-        
+        catch(WebSocketException e) 
+        {
+            Debug.Log(e);
+            await ReConnect();
+        }
         catch (ObjectDisposedException e)
         {
-            e.ToString();
+            Debug.Log(e);
             await ReConnect();
         }
         catch (InvalidOperationException e) 
         {
-            e.ToString();
+            Debug.Log(e);
             await ReConnect();
         }
-        return player;
+        return message;
     }
 }
 

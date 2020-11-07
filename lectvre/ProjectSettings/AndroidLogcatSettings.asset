@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "R58N12F7E8W",
+    "m_SelectedDeviceId": "9889db364f4f4f3851",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "9889db364f4f4f3851",
+        "name": "space.lectvre",
+        "processId": 17587,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -43,6 +43,54 @@
             "name": "space.lectvre",
             "processId": 29164,
             "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 27425,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 30789,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 390,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 5501,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 8030,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 14346,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 15546,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 17587,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -53,7 +101,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": true
+                "m_Selected": false
             },
             {
                 "m_Name": "",
@@ -69,7 +117,7 @@
             },
             {
                 "m_Name": "Unity",
-                "m_Selected": false
+                "m_Selected": true
             },
             {
                 "m_Name": "CRASH",
