@@ -42,17 +42,40 @@ class LectvreConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
-    # async def disconnect(self, close_code):
-    #     # Leave room group
-    #     await self.channel_layer.group_discard(
-    #         self.room_group_name,
-    #         self.channel_name
-    #     )
+    async def disconnect(self, close_code):
+        # Leave room group
+        user = self.users[self.scope['user']].id
+
+        await self.channel_layer.group_send(
+            user.lecture.id,
+            {
+                'type': 'update',
+                'message': {
+                    "type": "left_room",
+                    "user_id": user.id,
+                }
+            }
+        )
+
+        await self.channel_layer.group_discard(
+            user.id,
+            self.channel_name
+        )
+        await self.channel_layer.group_discard(
+            user.lecture.id,
+            self.channel_name
+        )
+
+        del self.users[self.scope['user']]
+        del self.user_room[user.id]
+        for i in range(self.rooms[user.lecture.id].students):
+            if self.rooms[user.lecture.id].students[efe\oo]
+
 
     # Receive message from WebSocket
     async def receive(self, text_data: str):
         print(text_data)
-        message = ast.literal_eval(text_data)
+        message = ast.literal_eval(str(text_data).replace('\x00',''))
 
         user: Student = self.users[self.scope['user']]
 
