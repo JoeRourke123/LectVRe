@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-#if(UNITY_2018_3_OR_NEWER) 
-using UnityEngine.Android; 
-#endif 
+#if(UNITY_2018_3_OR_NEWER)
+using UnityEngine.Android;
+#endif
 
 using agora_gaming_rtc;
 
@@ -18,7 +18,7 @@ public class AgoraChat : MonoBehaviour
     VideoSurface myView;
     VideoSurface remoteView;
     IRtcEngine mRtcEngine;
-    #if (UNITY_2018_3_OR_NEWER && UNITY_ANDROID)
+    #if (UNITY_2018_3_OR_NEWER)
     private ArrayList permissionList = new ArrayList();
     #endif
 
@@ -29,27 +29,27 @@ public class AgoraChat : MonoBehaviour
 
     void Start()
     {
-        #if(UNITY_2018_3_OR_NEWER) 
+        #if(UNITY_2018_3_OR_NEWER)
         permissionList.Add(Permission.Microphone);
         permissionList.Add(Permission.Camera);
-        #endif 
+        #endif
         SetupAgora();
     }
     private void CheckPermission()
-    { 
-        #if(UNITY_2018_3_OR_NEWER) 
-        foreach(string permission in permissionList) 
-        { 
-            if (Permission.HasUserAuthorizedPermission(permission)) 
-            { 
-            } 
-            else 
-            {  
-                Permission.RequestUserPermission(permission); 
-            } 
-        } 
-        #endif 
-    } 
+    {
+        #if(UNITY_2018_3_OR_NEWER)
+        foreach(string permission in permissionList)
+        {
+            if (Permission.HasUserAuthorizedPermission(permission))
+            {
+            }
+            else
+            {
+                Permission.RequestUserPermission(permission);
+            }
+        }
+        #endif
+    }
     void SetupAgora()
     {
         mRtcEngine = IRtcEngine.GetEngine(AppID);
@@ -105,7 +105,7 @@ public class AgoraChat : MonoBehaviour
     {
         if (mRtcEngine != null)
         {
-            IRtcEngine.Destroy(); 
+            IRtcEngine.Destroy();
             mRtcEngine = null;
         }
     }
@@ -114,10 +114,10 @@ public class AgoraChat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #if(UNITY_2018_3_OR_NEWER) 
+        #if(UNITY_2018_3_OR_NEWER)
         // Ask for your Android device's permissions.
-            CheckPermission(); 
-        #endif  
+            CheckPermission();
+        #endif
     }
 
      void OnJoinChannelSuccessHandler(string channelName, uint uid, int elapsed)
