@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "R58N12F7E8W",
+    "m_SelectedDeviceId": "89U4C18816006131",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
-        "exited": false
+        "deviceId": "89U4C18816006131",
+        "name": "space.lectvre",
+        "processId": 20725,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -42,6 +42,18 @@
             "deviceId": "43cada259805",
             "name": "space.lectvre",
             "processId": 29164,
+            "exited": true
+        },
+        {
+            "deviceId": "89U4C18816006131",
+            "name": "com.huawei.android.launcher",
+            "processId": 1856,
+            "exited": false
+        },
+        {
+            "deviceId": "89U4C18816006131",
+            "name": "space.lectvre",
+            "processId": 20725,
             "exited": true
         }
     ],
