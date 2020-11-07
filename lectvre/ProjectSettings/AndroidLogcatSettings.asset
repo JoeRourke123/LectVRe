@@ -1,5 +1,5 @@
 {
-    "m_SelectedDeviceId": "43cada259805",
+    "m_SelectedDeviceId": "R58N12F7E8W",
     "m_SelectedPackage": {
         "deviceId": "",
         "name": "",
@@ -43,6 +43,7 @@
             "name": "space.lectvre",
             "processId": 3725,
             "exited": true
+<<<<<<< HEAD
         },
         {
             "deviceId": "43cada259805",
@@ -133,6 +134,8 @@
             "name": "space.lectvre",
             "processId": 27872,
             "exited": false
+=======
+>>>>>>> adb3c6ffa3d30f054c8cdabf6181bfc1f4b94278
         }
     ],
     "m_Tags": {
@@ -143,7 +146,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": false
+                "m_Selected": true
             },
             {
                 "m_Name": "",
@@ -158,6 +161,13 @@
                 "m_Selected": false
             },
             {
+<<<<<<< HEAD
+=======
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+>>>>>>> adb3c6ffa3d30f054c8cdabf6181bfc1f4b94278
                 "m_Name": "CRASH",
                 "m_Selected": false
             },
@@ -168,7 +178,7 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 255.0,
+        "MemoryWindowHeight": 300.0,
         "MemoryWindowWidth": 170.0,
         "MemoryTypeEnabled": [
             true,
