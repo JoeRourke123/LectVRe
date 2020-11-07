@@ -22,5 +22,7 @@ public class MinifigHandUp : MonoBehaviour
         else {
             //make sure hand is down
         }
+        
+
     }
 }

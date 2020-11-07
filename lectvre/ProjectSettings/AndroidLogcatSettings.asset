@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "89U4C18816006131",
+    "m_SelectedDeviceId": "43cada259805",
     "m_SelectedPackage": {
-        "deviceId": "89U4C18816006131",
+        "deviceId": "43cada259805",
         "name": "space.lectvre",
-        "processId": 20725,
-        "exited": true
+        "processId": 15764,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -41,20 +41,110 @@
         {
             "deviceId": "43cada259805",
             "name": "space.lectvre",
-            "processId": 29164,
+            "processId": 10330,
             "exited": true
         },
         {
-            "deviceId": "89U4C18816006131",
-            "name": "com.huawei.android.launcher",
-            "processId": 1856,
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 11394,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 12970,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "com.android.launcher3",
+            "processId": 8148,
+            "exited": false
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 13879,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 14956,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 15764,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 27425,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 30789,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 390,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 5501,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 8030,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 14346,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 15546,
             "exited": false
         },
         {
             "deviceId": "89U4C18816006131",
             "name": "space.lectvre",
-            "processId": 20725,
-            "exited": true
+            "processId": 17587,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 20003,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 27872,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 541,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -86,6 +176,10 @@
             {
                 "m_Name": "CRASH",
                 "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": true
             }
         ]
     },
