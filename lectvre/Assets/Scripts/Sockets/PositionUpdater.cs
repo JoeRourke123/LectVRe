@@ -10,7 +10,7 @@ using UnityEngine;
 public class PositionUpdater : MonoBehaviour
 {
     private SocketHandler sh;
-    private static float INTERVAL = 1f;
+    private static float INTERVAL = 0.5f;
     
     // Start is called before the first frame update
     async void Start()
@@ -20,12 +20,13 @@ public class PositionUpdater : MonoBehaviour
         await sh.Send("{\"type\": \"create_group\", \"name\": \"Joe Rourke\"}");
 
         InvokeRepeating("SendPosition", 0.02f, INTERVAL);
+        ReceiveLoop();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+
     }
 
     async void OnDestroy()
@@ -44,7 +45,19 @@ public class PositionUpdater : MonoBehaviour
         );
 
         await sh.Send(msg.toJson());
-        await sh.Receive();
+        Message message = await sh.Receive();
+    }
+
+    async void ReceiveLoop()
+    {
+        while(true) {
+            RecMessage message = await sh.Receive();
+            UpdateUsers(message);
+        }
+    }
+
+    void UpdateUsers(RecMessage message) {
+        GameObject.Find("UserManager").SendMessage("UpdateUsers", message);
     }
 }
 
