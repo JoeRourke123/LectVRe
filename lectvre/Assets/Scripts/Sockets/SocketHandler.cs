@@ -10,13 +10,17 @@ public class SocketHandler : MonoBehaviour
     private string serverURL = "ws://192.168.0.24:8000/ws/";
     private static float INTERVAL = 0.05f;
     private string userId;
-    private string roomId = "db1f5";
-    private string username = "Fuck You";
+    private string roomId;
+    private string username;
+    private MinifigureData minifigureData;
     public GameObject userObject;
 
     // Start is called before the first frame update
     async void Start()
     {
+        this.minifigureData = new MinifigureData(GlobalControl.Instance.data);
+        this.username = GlobalControl.Instance.name;
+        this.roomId = GlobalControl.Instance.code;
         ws = new WebSocket(serverURL);
 
         ws.OnOpen += () =>
@@ -50,7 +54,7 @@ public class SocketHandler : MonoBehaviour
     }
     private async Task JoinRoom() {
         Debug.Log("Joining Room...");
-        await Send(new UserMessage("join", roomId, username, "join", new MinifigureData(1, 1, 1, 1 ,1, 1)));
+        await Send(new UserMessage("join", roomId, username, userId, this.minifigureData));
         Debug.Log("Roomed Joined");
         InvokeRepeating("SendPosition", 0.5f, INTERVAL);
         return;
@@ -64,7 +68,7 @@ public class SocketHandler : MonoBehaviour
             Camera.main.gameObject.transform.parent.position.y,
             Camera.main.gameObject.transform.parent.position.z,
             Camera.main.gameObject.transform.eulerAngles.y,
-            new MinifigureData(0,0,0,0,0,0)
+            this.minifigureData
         );
         await Send(msg);
     }
@@ -155,6 +159,9 @@ public class SocketHandler : MonoBehaviour
             else {
                 GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
                 UserData data = newChild.GetComponent<UserData>();
+                Generator generator = newChild.GetComponent<Generator>();
+                
+                generator.NPCChange(message.minifigureData.toArray());
                 data.username = message.username;
                 data.user = message.user;
             }

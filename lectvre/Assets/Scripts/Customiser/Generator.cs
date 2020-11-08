@@ -19,6 +19,22 @@ public class Generator : MonoBehaviour
         //GameObject instance = GameObject.Instantiate(gameObject) as GameObject;
     //}
 
+    void Start() {
+        if(gameObject.name == "Player") {
+            Change();
+        }
+    }
+    
+    public void NPCChange(int[] data) {
+        this.data = data;
+        ChangeHair();
+        ChangeFace();
+        ChangeColour("Torso");
+        ChangeColour("Legs");
+        ChangeSkinColour();
+        ChangeHairColour();
+    }
+
     public void Change() {
         data = GlobalControl.Instance.data;
         Debug.Log(GlobalControl.Instance.name);

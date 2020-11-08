@@ -108,7 +108,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: -4974468161004867859, guid: e18e0a364b314c34d93c79c90851dc51, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 6990568501930640135}
   m_AABB:
     m_Center: {x: 0.00010582409, y: -0.0010868618, z: -0.00036243908}
     m_Extent: {x: 0.006945911, y: 0.006790663, z: 0.008160938}
@@ -613,7 +613,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: -3103911939149292285, guid: 0bd34d1a32afaf3479fd43b14fe17280, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 6990568501930640135}
   m_AABB:
     m_Center: {x: -0.00006726594, y: -0.0013150077, z: -0.002612238}
     m_Extent: {x: 0.005943155, y: 0.006580338, z: 0.009098593}
@@ -942,7 +942,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: -4974468161004867859, guid: 827edf736df992945b840412819936ba, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 6990568501930640135}
   m_AABB:
     m_Center: {x: 0.00006419979, y: -0.0068485495, z: -0.00023656245}
     m_Extent: {x: 0.0069590397, y: 0.010307049, z: 0.0063649975}
@@ -1141,7 +1141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1491308154644586513
 Transform:
   m_ObjectHideFlags: 0
@@ -1659,7 +1659,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: 3069042841636108082, guid: d5ea82afd3640c14d94c3f4b2a1bd4d9, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 6990568501930640135}
   m_AABB:
     m_Center: {x: -0.00005518808, y: -0.008350981, z: -0.002157595}
     m_Extent: {x: 0.006654407, y: 0.012388349, z: 0.008731765}
@@ -4781,7 +4781,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: -4974468161004867859, guid: aa5857443ec1a2d498f7a2f8b7256aea, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 6990568501930640135}
   m_AABB:
     m_Center: {x: 0.000037006568, y: -0.005157388, z: -0.0005614646}
     m_Extent: {x: 0.00796943, y: 0.008907947, z: 0.0071932394}
@@ -5230,7 +5230,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 46a818a9505e7d542b546ca1e42bc6c6, type: 3}
+  - {fileID: 2100000, guid: 697202dccf18243fe8c46e0a716260df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6767,7 +6767,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d5ea82afd3640c14d94c3f4b2a1bd4d9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d5ea82afd3640c14d94c3f4b2a1bd4d9,
         type: 3}
