@@ -3418,6 +3418,7 @@ GameObject:
   - component: {fileID: 816616112086672751}
   - component: {fileID: 5067355240233822733}
   - component: {fileID: 2973306869828006502}
+  - component: {fileID: 3188336642453656494}
   m_Layer: 0
   m_Name: armUp_L
   m_TagString: Untagged
@@ -3454,7 +3455,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 0f387f33588f66c4db88852656ef9435, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -3472,6 +3473,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0307b57f4ac5644b17f67148ed5d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &3188336642453656494
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5377833341133646260}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5405254166162609185
 GameObject:
   m_ObjectHideFlags: 0
