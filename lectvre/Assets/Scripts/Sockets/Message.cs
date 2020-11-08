@@ -29,7 +29,7 @@ public class Message : MainMessage
     }
 
     public Vector3 toVector3() {
-        return new Vector3(x, y, z);
+        return new Vector3(this.x, this.y, this.z);
     }
 
     public float getAngle() {

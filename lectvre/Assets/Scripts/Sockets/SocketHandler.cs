@@ -64,7 +64,6 @@ public class SocketHandler : MonoBehaviour
             Camera.main.transform.eulerAngles.y,
             new MinifigureData(0,0,0,0,0,0)
         );
-        Debug.Log(msg.toJson());
         await Send(msg);
     }
 
@@ -116,7 +115,6 @@ public class SocketHandler : MonoBehaviour
         }
     }
     private void UpdateRoom(UserMessage message) {
-        Debug.Log("NEW MESSAGE: " + message);
         this.userId = message.user;
         this.roomId = message.roomId;
     }
@@ -133,6 +131,7 @@ public class SocketHandler : MonoBehaviour
             if(child != null) {
                 child.gameObject.name = message.username;
                 child.gameObject.transform.position = message.toVector3();
+                Debug.Log(message.toVector3());
                 Vector3 newRotation = child.gameObject.transform.eulerAngles;
                 newRotation.y = message.getAngle();
                 child.gameObject.transform.eulerAngles = newRotation;
