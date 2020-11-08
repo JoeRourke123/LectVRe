@@ -11,7 +11,6 @@ public class SocketHandler : MonoBehaviour
     private string userId;
     private string roomId = "db1f5";
     private string name = "Fuck You";
-    private Dictionary<string, UserData> users = new Dictionary<string, UserData>();
     public GameObject userObject;
     
     // Start is called before the first frame update
@@ -125,16 +124,21 @@ public class SocketHandler : MonoBehaviour
     }
     private void UpdateUsers(RecMessage message) {
         if(message.user != this.userId) {
-            if(users.ContainsKey(message.user)) {
-                GameObject user = users[message.user].gameObject;
-                user.transform.position = message.toVector3();
-
-                Vector3 newRotation = user.transform.eulerAngles;
+            Transform child;
+            if((child = transform.Find(message.user)) != null) {
+                child.gameObject.name = message.name;
+                child.position = message.toVector3();
+                Vector3 newRotation = child.eulerAngles;
                 newRotation.y = message.getAngle();
-                user.transform.eulerAngles = newRotation;
+                child.eulerAngles = newRotation;
             }
             else {
-                users.Add(message.user, new UserData(message.user, message.name, Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform)));
+                GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
+                UserData data = newChild.GetComponent<UserData>();
+                
+                data.name = message.name;
+                data.id = message.user;
+                newChild.name = message.name;
             }
         }
     }
