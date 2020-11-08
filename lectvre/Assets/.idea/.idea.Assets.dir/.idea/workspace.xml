@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9568722b-7c75-4bf4-8258-7a55ecf8a55e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../server/server/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/server/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectSettings/AndroidLogcatSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectSettings/AndroidLogcatSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Scripts/TestWebview.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/TestWebview.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/UnityThread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/WebController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -39,6 +44,7 @@
       <list>
         <option value="$PROJECT_DIR$/AgoraChat.cs" />
         <option value="$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" />
+        <option value="$PROJECT_DIR$/Scripts/TestWebview.cs" />
       </list>
     </option>
   </component>
@@ -49,6 +55,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
