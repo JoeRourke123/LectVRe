@@ -162,7 +162,11 @@ public class SocketHandler : MonoBehaviour
 
                 Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
                 foreach(Transform seat in seats) {
-                    if(seat.position == newChild.transform.position) {
+                    if(
+                        seat.position.x  - newChild.transform.position.x < 3 &&
+                        seat.position.y - newChild.transform.position.y < 3 &&
+                        seat.position.z - newChild.transform.position.z < 3
+                    ) {
                         data.seat = Int32.Parse(seat.gameObject.name);
                     }
                 }
