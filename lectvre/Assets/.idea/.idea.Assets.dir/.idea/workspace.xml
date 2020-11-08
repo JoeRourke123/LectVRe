@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9568722b-7c75-4bf4-8258-7a55ecf8a55e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../server/server/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/server/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +32,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/AgoraChat.cs" />
+        <option value="$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" />
       </list>
     </option>
   </component>
@@ -66,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604768193700</updated>
-      <workItem from="1604768198496" duration="333000" />
+      <workItem from="1604768198496" duration="345000" />
     </task>
     <servers />
   </component>
