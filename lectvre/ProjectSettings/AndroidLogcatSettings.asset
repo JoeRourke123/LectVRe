@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "9889db364f4f4f3851",
+    "m_SelectedDeviceId": "R58N12F7E8W",
     "m_SelectedPackage": {
-        "deviceId": "9889db364f4f4f3851",
+        "deviceId": "R58N12F7E8W",
         "name": "space.lectvre",
-        "processId": 22043,
-        "exited": false
+        "processId": 7610,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -36,6 +36,12 @@
             "deviceId": "R58N12F7E8W",
             "name": "space.lectvre",
             "processId": 13969,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 7610,
             "exited": false
         },
         {
@@ -78,18 +84,6 @@
             "deviceId": "9889db364f4f4f3851",
             "name": "com.sec.android.app.launcher",
             "processId": 30869,
-            "exited": false
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 11174,
-            "exited": false
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 22043,
             "exited": false
         }
     ],

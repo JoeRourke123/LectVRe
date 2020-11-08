@@ -6,6 +6,7 @@ def get_free_seat(lecture: Lecture):
     seats = [i for i in range(9)]
 
     for student in lecture.students:
+        print(student.seat)
         seats.remove(student.seat)
 
     chosen_seat = choice(seats)

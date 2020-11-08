@@ -126,7 +126,7 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                 return_data = {
                     "type": "join",
                     "user": user.id,
-                    "name": user_obj.name,
+                    "username": user_obj.username,
                     "seat": user.seat,
                     "minifig": user_obj.minifig,
                 }
