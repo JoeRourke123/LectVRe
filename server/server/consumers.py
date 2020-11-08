@@ -116,7 +116,7 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                 room: Lecture = self.rooms[message['room']]
                 self.user_room[user.id] = room
 
-                user_obj: Student = Student(id=user.id, seat=get_free_seat(room), lecture=room, **message)
+                user_obj: Student = Student(id=user.id, lecture=room, **message)
                 self.users[scope_user] = user_obj
 
                 self.rooms[message['room']].students.append(user_obj)
