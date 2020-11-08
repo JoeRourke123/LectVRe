@@ -5,7 +5,7 @@ using UnityEngine;
 public class Generator : MonoBehaviour
 {   
 
-    private int[] data = {0,0,6,10,0,0};
+    private int[] data  = new int[6];
 
     public Material[] skinColour;
     public Material[] hairColour;
@@ -19,11 +19,8 @@ public class Generator : MonoBehaviour
         //GameObject instance = GameObject.Instantiate(gameObject) as GameObject;
     //}
 
-    public void Start(){
-        //Debug.Log("Test");
-    }
-
     public void Change() {
+        data = GlobalControl.Instance.data;
         ChangeHair();
         ChangeFace();
         ChangeColour("Torso");
