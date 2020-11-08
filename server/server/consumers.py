@@ -59,24 +59,27 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
         user = self.users[scope_user]
 
-        if user.lecture:
+        if user.id in self.user_room:
+            room = self.user_room[user.id]
+
             await self.channel_layer.group_send(
-                user.lecture.id,
+                room.id,
                 {
                     'type': 'update',
                     'message': {
-                        "type": "left_room",
-                        "user_id": user.id,
+                        "type": "leave",
+                        "user": user.id,
+                        "username": user.username
                     }
                 }
             )
             await self.channel_layer.group_discard(
-                user.lecture.id,
+                room.id,
                 self.channel_name
             )
-            for i in range(len(self.rooms[user.lecture.id].students)):
-                if self.rooms[user.lecture.id].students[i].id == user.id:
-                    self.rooms[user.lecture.id].students.pop(i)
+            for i in range(len(self.rooms[room.id].students)):
+                if self.rooms[room.id].students[i].id == user.id:
+                    self.rooms[room.id].students.pop(i)
 
         await self.channel_layer.group_discard(
             user.id,
