@@ -57,12 +57,13 @@ public class SocketHandler : MonoBehaviour
     }
     private async void SendPosition()
     {
+        Debug.Log("Angle: " + Camera.main.gameObject.transform.parent.eulerAngles.y);
         Message msg = new Message(
             "position",
             Camera.main.gameObject.transform.parent.position.x,
             Camera.main.gameObject.transform.parent.position.y,
             Camera.main.gameObject.transform.parent.position.z,
-            Camera.main.gameObject.transform.parent.eulerAngles.y,
+            Camera.main.gameObject.transform.eulerAngles.y,
             new MinifigureData(0,0,0,0,0,0)
         );
         await Send(msg);
@@ -146,6 +147,7 @@ public class SocketHandler : MonoBehaviour
             if(child != null) {
                 child.gameObject.name = message.username;
                 child.gameObject.transform.position = message.toVector3();
+
                 Vector3 newRotation = child.gameObject.transform.eulerAngles;
                 newRotation.y = message.getAngle();
                 child.gameObject.transform.eulerAngles = newRotation;

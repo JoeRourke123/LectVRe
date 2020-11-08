@@ -18,6 +18,10 @@ public class RecMessage : Message
     public RecMessage() {
         
     }
+
+    new public float getAngle() {
+        return this.r;
+    }
     new public string toJson() {
         return $"{{\"type\":\"{type}\", \"user\":\"{user}\", \"name\":\"{username}\", \"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"minifig\":{minifigureData.toJson()}}}";
     }

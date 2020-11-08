@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ButtonClick : MonoBehaviour
 {
 
-    private static float TOTAL_TIME = 10;
+    private static float TOTAL_TIME = 3;
     private float TIME;
     private bool lookingAt = false;
 
@@ -27,26 +27,26 @@ public class ButtonClick : MonoBehaviour
             if(TIME < 0) {
                 TIME = 0;
             }
-            Debug.Log(Time.deltaTime + " @ " + (255 - Mathf.RoundToInt((TIME/TOTAL_TIME) * 225)));
-            gameObject.GetComponent<Renderer>().material.color = new Color(
-                255 - Mathf.RoundToInt((TIME/TOTAL_TIME) * 225), 
-                255 - Mathf.RoundToInt((TIME/TOTAL_TIME) * 225), 
-                255 - Mathf.RoundToInt((TIME/TOTAL_TIME) * 255)
-                );
+            
         }
         if(lookingAt && TIME == 0) {
-            targetGO.SendMessage(targetFN);
+            Renderer renderer = gameObject.GetComponent<Renderer>();
+            renderer.materials[0].color = new Color (0, 255, 0);
+            //targetGO.SendMessage(targetFN);
         }
     }
 
     void OnPointerEnter() {
         Debug.Log("Hit the button");
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        renderer.materials[0].color = new Color (128, 128, 0);
         lookingAt = true;
     }
 
     void OnPointerExit() {
         Debug.Log("Exited the button");
-        gameObject.GetComponent<Renderer>().material.color = new Color(255, 255, 255);
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        renderer.materials[0].color = new Color (255, 255, 255);
         TIME = TOTAL_TIME;
         lookingAt = false;
     }

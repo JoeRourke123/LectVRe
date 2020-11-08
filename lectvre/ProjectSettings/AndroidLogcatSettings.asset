@@ -1,12 +1,12 @@
 {
-    "m_SelectedDeviceId": "9889db364f4f4f3851",
+    "m_SelectedDeviceId": "R58N12F7E8W",
     "m_SelectedPackage": {
-        "deviceId": "9889db364f4f4f3851",
+        "deviceId": "R58N12F7E8W",
         "name": "space.lectvre",
-        "processId": 18833,
+        "processId": 24092,
         "exited": false
     },
-    "m_SelectedPriority": 0,
+    "m_SelectedPriority": 1,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "9889db364f4f4f3851",
@@ -139,6 +139,54 @@
             "name": "space.lectvre",
             "processId": 18833,
             "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 21829,
+            "exited": true
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 7726,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 9590,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 15136,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 20952,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 21352,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 23033,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 24092,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -149,7 +197,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": true
+                "m_Selected": false
             },
             {
                 "m_Name": "",
@@ -165,7 +213,7 @@
             },
             {
                 "m_Name": "Unity",
-                "m_Selected": false
+                "m_Selected": true
             },
             {
                 "m_Name": "CRASH",
@@ -191,7 +239,7 @@
         "MemoryGroup": 1,
         "Behavior": 1
     },
-    "m_Filter": "@",
+    "m_Filter": "",
     "m_FilterIsRegularExpression": false,
     "m_SymbolPaths": []
 }
