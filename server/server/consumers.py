@@ -169,7 +169,7 @@ class LectvreConsumer(AsyncWebsocketConsumer):
             user_obj = self.users[scope_user]
             return_data = {**message, "user": user_obj.id, "minifig": user_obj.minifig}
 
-        print("Response: " + str(return_data))
+        # print("Response: " + str(return_data))
 
         # Send message to room group
         await self.channel_layer.group_send(
