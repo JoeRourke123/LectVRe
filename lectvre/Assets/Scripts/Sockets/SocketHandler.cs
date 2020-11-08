@@ -123,14 +123,20 @@ public class SocketHandler : MonoBehaviour
         this.roomId = message.roomId;
     }
     private void UpdateUsers(RecMessage message) {
+        UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
         if(message.user != this.userId) {
-            Transform child;
-            if((child = transform.Find(message.user)) != null) {
+            UserData child = null;
+            foreach(UserData userData in childrenData) {
+                if((child = userData).id == message.user) {
+                    break;
+                }
+            }
+            if((child != null) {
                 child.gameObject.name = message.name;
-                child.position = message.toVector3();
-                Vector3 newRotation = child.eulerAngles;
+                child.gameObject.transform.position = message.toVector3();
+                Vector3 newRotation = child.gameObject.transform.eulerAngles;
                 newRotation.y = message.getAngle();
-                child.eulerAngles = newRotation;
+                child.gameObject.transform.eulerAngles = newRotation;
             }
             else {
                 GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
