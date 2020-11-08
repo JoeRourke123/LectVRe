@@ -128,6 +128,7 @@ public class SocketHandler : MonoBehaviour
             for(int j = 0; j < childrenData.Length; j++) {
                 if(childrenData[j].seat != Int32.Parse(seats[i].name)) {
                     Camera.main.gameObject.GetComponentInParent<Transform>().position = seats[i].position;
+                    return;
                 }
             }
         }
