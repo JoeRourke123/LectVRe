@@ -1,10 +1,10 @@
 {
     "m_SelectedDeviceId": "9889db364f4f4f3851",
     "m_SelectedPackage": {
-        "deviceId": "9889db364f4f4f3851",
-        "name": "space.lectvre",
-        "processId": 18871,
-        "exited": true
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -47,42 +47,6 @@
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
-            "processId": 15546,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 17587,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 20003,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 27872,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 541,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 20080,
-            "exited": false
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
             "processId": 26998,
             "exited": true
         },
@@ -96,19 +60,25 @@
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
             "processId": 5457,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
             "processId": 7908,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
             "processId": 18871,
             "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "com.sec.android.app.launcher",
+            "processId": 30869,
+            "exited": false
         }
     ],
     "m_Tags": {

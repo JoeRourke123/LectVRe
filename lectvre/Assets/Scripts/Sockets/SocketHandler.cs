@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using NativeWebSocket;
@@ -121,6 +122,15 @@ public class SocketHandler : MonoBehaviour
     private void UpdateRoom(UserMessage message) {
         this.userId = message.user;
         this.roomId = message.roomId;
+        Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
+        UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
+        for(int i = 0; i < seats.Length; i++) {
+            for(int j = 0; j < childrenData.Length; j++) {
+                if(childrenData[j].seat != Int32.Parse(seats[i].name)) {
+                    Camera.main.gameObject.GetComponentInParent<Transform>().position = seats[i].position;
+                }
+            }
+        }
     }
     private void UpdateUsers(RecMessage message) {
         UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
@@ -143,7 +153,12 @@ public class SocketHandler : MonoBehaviour
             else {
                 GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
                 UserData data = newChild.GetComponent<UserData>();
-                
+                Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
+                foreach(Transform seat in seats) {
+                    if(seat.position == newChild.transform.position) {
+                        data.seat = Int32.Parse(seat.gameObject.name);
+                    }
+                }
                 data.username = message.username;
                 data.user = message.user;
             }
