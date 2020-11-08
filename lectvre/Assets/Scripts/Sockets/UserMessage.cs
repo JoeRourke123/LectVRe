@@ -22,7 +22,7 @@ public class UserMessage : MainMessage
         this.roomId = roomId;
         this.username = username;
         this.user = user;
-        this.seat = seat;
+        this.seat = seat; 
         this.minifigureData = minifigureData;
     }
     public UserMessage(string type, string roomId, string username, string user, int head, int torso, int legs, int hair, int hairColour, int skinColour) : base(type){

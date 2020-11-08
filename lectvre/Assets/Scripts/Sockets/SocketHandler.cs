@@ -59,10 +59,10 @@ public class SocketHandler : MonoBehaviour
     {
         Message msg = new Message(
             "position",
-            Camera.main.transform.position.x,
-            Camera.main.transform.position.y,
-            Camera.main.transform.position.z,
-            Camera.main.transform.eulerAngles.y,
+            Camera.main.gameObject.transform.parent.position.x,
+            Camera.main.gameObject.transform.parent.position.y,
+            Camera.main.gameObject.transform.parent.position.z,
+            Camera.main.gameObject.transform.parent.eulerAngles.y,
             new MinifigureData(0,0,0,0,0,0)
         );
         await Send(msg);
@@ -95,7 +95,6 @@ public class SocketHandler : MonoBehaviour
         return;
     }
     private IMessageInterface Receive(byte[] bytes) {
-        // Debug.Log("Bytes: " + bytes);
         string message = System.Text.Encoding.UTF8.GetString(bytes);
         Debug.Log("OnMessage: " + message);
 
@@ -122,7 +121,6 @@ public class SocketHandler : MonoBehaviour
     private void UpdateRoom(UserMessage message) {
         this.userId = message.user;
         this.roomId = message.roomId;
-
         Camera.main.gameObject.transform.parent.position = GameObject.Find("Seats").gameObject.transform.Find(message.seat.ToString()).position;
     }
     private void UpdateUsers(RecMessage message) {
