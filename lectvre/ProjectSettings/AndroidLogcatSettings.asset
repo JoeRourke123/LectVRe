@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "R58N12F7E8W",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "R58N12F7E8W",
+        "name": "space.lectvre",
+        "processId": 7610,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -66,6 +66,12 @@
             "deviceId": "R58N12F7E8W",
             "name": "com.discord",
             "processId": 22900,
+            "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 7610,
             "exited": false
         },
         {

@@ -130,27 +130,6 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                     "minifig": user_obj.minifig,
                 }
 
-                print("USER_JOINED!!!!! " + str(return_data))
-
-                await self.channel_layer.group_send(
-                    room.id,
-                    {
-                        'type': 'update',
-                        'message': return_data
-                    }
-                )
-
-                return_data = {
-                    "type": "position",
-                    "user": user_obj.id,
-                    "name": user_obj.name,
-                    "x": user_obj.position[0],
-                    "y": user_obj.position[1],
-                    "z": user_obj.position[2],
-                    "r": user_obj.position[3],
-                    "minifig": user_obj.minifig,
-                }
-
                 print(return_data)
         elif message['type'] == "create_room":
             user_obj: Lecturer = Lecturer(id=user.id, **message)
