@@ -10,7 +10,7 @@ public class SocketHandler : MonoBehaviour
     private static float INTERVAL = 0.05f;
     private string userId;
     private string roomId = "db1f5";
-    private string name = "Fuck You";
+    private string username = "Fuck You";
     public GameObject userObject;
     
     // Start is called before the first frame update
@@ -49,7 +49,7 @@ public class SocketHandler : MonoBehaviour
     }
     private async Task JoinRoom() {
         Debug.Log("Joining Room...");
-        await Send(new UserMessage("join", roomId, name, "join", new MinifigureData(1, 1, 1, 1 ,1, 1)));
+        await Send(new UserMessage("join", roomId, username, "join", new MinifigureData(1, 1, 1, 1 ,1, 1)));
         Debug.Log("Roomed Joined");
         InvokeRepeating("SendPosition", 0.5f, INTERVAL);
         return;
@@ -100,11 +100,9 @@ public class SocketHandler : MonoBehaviour
         Debug.Log("OnMessage: " + message);
 
         MainMessage mainMessage = JsonUtility.FromJson<MainMessage>(message);
-        Debug.Log("Initial parse: "+ mainMessage.type);
         switch(mainMessage.type) {
             case "position":
             RecMessage rm = JsonUtility.FromJson<RecMessage>(message);
-            Debug.Log("Second parse: " + rm + rm.type);
             UpdateUsers(rm);
             return rm;
             case "join":
@@ -133,7 +131,7 @@ public class SocketHandler : MonoBehaviour
                 }
             }
             if(child != null) {
-                child.gameObject.name = message.name;
+                child.gameObject.name = message.username;
                 child.gameObject.transform.position = message.toVector3();
                 Vector3 newRotation = child.gameObject.transform.eulerAngles;
                 newRotation.y = message.getAngle();
@@ -143,7 +141,7 @@ public class SocketHandler : MonoBehaviour
                 GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
                 UserData data = newChild.GetComponent<UserData>();
                 
-                data.name = message.name;
+                data.username = message.username;
                 data.id = message.user;
             }
         }

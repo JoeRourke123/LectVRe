@@ -7,19 +7,19 @@ using System;
 public class UserMessage : MainMessage
 {
     public string roomId;
-    public string name;
+    public string username;
     public string user;
     public MinifigureData minifigureData;
 
-    public UserMessage(string type, string roomId, string name, string user, MinifigureData minifigureData) : base(type) {
+    public UserMessage(string type, string roomId, string username, string user, MinifigureData minifigureData) : base(type) {
         this.roomId = roomId;
-        this.name = name;
+        this.username = username;
         this.user = user;
         this.minifigureData = minifigureData;
     }
-    public UserMessage(string type, string roomId, string name, string user, int head, int torso, int legs, int hair, int hairColour, int skinColour) : base(type){
+    public UserMessage(string type, string roomId, string username, string user, int head, int torso, int legs, int hair, int hairColour, int skinColour) : base(type){
         this.roomId = roomId;
-        this.name = name;
+        this.username = username;
         this.user = user;
         this.minifigureData = new MinifigureData(hair, hairColour, skinColour, head, torso, legs);
     }
@@ -29,7 +29,7 @@ public class UserMessage : MainMessage
     }
 
     new public string toJson() {
-        return $"{{\"type\":\"{type}\", \"minifig\":{minifigureData.toJson()}, \"name\":\"{name}\", \"room\":\"{roomId}\"}}";
+        return $"{{\"type\":\"{type}\", \"minifig\":{minifigureData.toJson()}, \"name\":\"{username}\", \"room\":\"{roomId}\"}}";
     }
 }
     
