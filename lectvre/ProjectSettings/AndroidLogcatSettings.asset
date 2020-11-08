@@ -3,45 +3,129 @@
     "m_SelectedPackage": {
         "deviceId": "9889db364f4f4f3851",
         "name": "space.lectvre",
-        "processId": 11889,
+        "processId": 8972,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "9889db364f4f4f3851",
-            "name": "com.sec.android.app.launcher",
-            "processId": 30869,
-            "exited": false
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
-            "processId": 28318,
+            "processId": 21408,
             "exited": true
         },
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
-            "processId": 31932,
+            "processId": 23147,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 25550,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 30653,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 2569,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 8368,
             "exited": false
         },
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
-            "processId": 7047,
+            "processId": 32413,
             "exited": false
         },
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
-            "processId": 9194,
+            "processId": 4520,
             "exited": false
         },
         {
             "deviceId": "9889db364f4f4f3851",
             "name": "space.lectvre",
-            "processId": 11889,
+            "processId": 7411,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 13998,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 17022,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 20098,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 21760,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 27317,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 28227,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 31278,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 2109,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 5360,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 7393,
+            "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 8972,
             "exited": false
         }
     ],
@@ -95,7 +179,7 @@
         "MemoryGroup": 1,
         "Behavior": 1
     },
-    "m_Filter": "",
+    "m_Filter": "@",
     "m_FilterIsRegularExpression": false,
     "m_SymbolPaths": []
 }
