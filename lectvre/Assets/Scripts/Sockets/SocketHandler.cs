@@ -18,7 +18,7 @@ public class SocketHandler : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        this.minifigureData = new MinifigureData(GlobalControl.Instance.data);
+        this.minifigureData = new MinifigureData(new int[] {1, 2, 3, 4, 5, 6});
         this.username = GlobalControl.Instance.name;
         this.roomId = GlobalControl.Instance.code;
         ws = new WebSocket(serverURL);
