@@ -13,8 +13,8 @@ public class Inputter : MonoBehaviour
     public GameObject codeField;
 
     public void Store() {
-        name = nameField.GetComponent<Text>().text;
-        code = codeField.GetComponent<Text>().text;
+        GlobalControl.Instance.name = nameField.GetComponent<Text>().text;
+        GlobalControl.Instance.code = codeField.GetComponent<Text>().text;
     }
 
 }

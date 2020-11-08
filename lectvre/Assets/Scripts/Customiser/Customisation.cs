@@ -127,8 +127,9 @@ public class Customisation : MonoBehaviour
     }
 
     public void PrintData() {
+        GlobalControl.Instance.data = data;
         for (int i = 0; i < 6; i ++) {
-            Debug.Log(data[i]);
+            Debug.Log("Print Data: " + i + " " + GlobalControl.Instance.data[i]);
         }
     }
 
