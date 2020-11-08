@@ -9,6 +9,8 @@ public class RoomJoin : MainMessage
     public string room;
     public string user;
 
+
+
     public RoomJoin(string type, string room, string user) : base(type){
         this.room = room;
         this.user = user;

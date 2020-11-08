@@ -6,15 +6,20 @@ using UnityEngine.UI;
 public class Inputter : MonoBehaviour
 {
 
-    public string name;
     public GameObject nameField;
-
-    public string code;
     public GameObject codeField;
 
+    public GameObject leaderNameField;
+    public GameObject URLField;
+
     public void Store() {
-        name = nameField.GetComponent<Text>().text;
-        code = codeField.GetComponent<Text>().text;
+        GlobalControl.Instance.name = nameField.GetComponent<Text>().text;
+        GlobalControl.Instance.code = codeField.GetComponent<Text>().text;
+    }
+
+    public void LeaderStore() {
+        GlobalControl.Instance.leaderName = leaderNameField.GetComponent<Text>().text;
+        GlobalControl.Instance.URL = URLField.GetComponent<Text>().text;
     }
 
 }

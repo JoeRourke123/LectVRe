@@ -28,7 +28,9 @@ class LectvreConsumer(AsyncWebsocketConsumer):
         scope_user = self.get_scope_id()
 
         if "db1f5" not in self.rooms:
-            self.rooms["db1f5"] = Lecture(id="db1f5", lecturer=Lecturer(id=self.gen_user_id(), name="Name"))
+            self.rooms["db1f5"] = Lecture(id="db1f5",
+                                          slideURL="https://docs.google.com/presentation/d/1ugjBj2D57vMzWYHlC3DJGiP-mnJMzineXlofcXJwYLU/edit?usp=sharing",
+                                          lecturer=Lecturer(id=self.gen_user_id(), name="Name"))
 
         self.users[scope_user]: Student = Student(id=self.gen_user_id())
 
@@ -128,29 +130,45 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                 return_data = {
                     "type": "join",
                     "user": user.id,
+                    "room": room.id,
                     "username": user_obj.username,
                     "seat": seat_no,
                     "minifig": user_obj.minifig,
+                    "slideURL": room.slideURL,
+                    "slide": room.slide,
                 }
 
                 # Changes room to user so that only the user receives the join message
                 room = user_obj.id
                 print(return_data)
+        elif message['type'] == "change_slide":
+            room.slide = message['slide']
+            return_data = {
+                "type": "slide",
+                "slideURL": room.slideURL,
+                "slide": room.slide
+            }
         elif message['type'] == "create_room":
             user_obj: Lecturer = Lecturer(id=user.id, **message)
-            room: Lecture = Lecture(id=self.gen_user_id()[0:5], lecturer=user_obj)
+
+            room: Lecture = Lecture(id=self.gen_user_id()[0:5], lecturer=user_obj, **message)
             user_obj.lecture = room
 
             self.rooms[room.id] = room
             self.user_room[user.id] = room.id
 
+            await self.add_to_room(user_obj, room)
+
             return_data = {
-                "type": "create_room",
-                "room": room.id,
+                "type": "join",
                 "user": user.id,
+                "room": room.id,
+                "username": user_obj.username,
+                "minifig": user_obj.minifig,
+                "slideURL": room.slideURL,
+                "slide": room.slide,
             }
 
-            await self.add_to_room(user_obj, room)
         elif message['type'] == "leave":
             pass
         elif message['type'] == "handup":

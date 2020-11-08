@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using System.Threading;
+
 public class WebController : MonoBehaviour {
 
     public delegate void OnResultRecieved(byte[] result);
     public static OnResultRecieved resultRecieved;
+
+    public string toget;
 
     class AndroidPluginCallback : AndroidJavaProxy {
         public AndroidPluginCallback() : base("com.example.matthew.webViewPlugin.PluginCallback") { }
@@ -18,7 +22,7 @@ public class WebController : MonoBehaviour {
             AndroidJavaObject bufferObject = bytesObj.Get<AndroidJavaObject>("Buffer");
             byte[] bytes = AndroidJNIHelper.ConvertFromJNIArray<byte[]>(bufferObject.GetRawObject());
 
-            UnityThread.executeCoroutine(webController.LoadImageRoutine(bytes));
+            webController.LoadImageRoutine(bytes);
         }
     }
 
@@ -43,31 +47,27 @@ public class WebController : MonoBehaviour {
 
         activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
 
-        activity.Call("runOnUiThread", new AndroidJavaRunnable(() => {
-            plugin = new AndroidJavaObject(
-            "com.example.matthew.webViewPlugin.WebBridge");
-        }));
-
-        activity.Call("runOnUiThread", new AndroidJavaRunnable(() => {
-            plugin.Call("init");
-        }));
+	    plugin = new AndroidJavaObject("com.example.matthew.webViewPlugin.WebBridge");
+	    plugin.Call("init");
 
         //set callback
         AndroidPluginCallback androidPluginCallback = new AndroidPluginCallback {webController = this};
-        activity.Call("runOnUiThread", new AndroidJavaRunnable(() => {
-            plugin.Call("SetUnityBitmapCallback", androidPluginCallback);
-        }));
+        plugin.Call("SetUnityBitmapCallback", androidPluginCallback);
     }
 
-    IEnumerator LoadImageRoutine(byte[] bytes) {
-        yield return new WaitForEndOfFrame();
+    void LoadImageRoutine(byte[] bytes) {
         resultRecieved?.Invoke(bytes);
     }
 
     public void GetImageFromURL(string url) {
         // Calls the function from the jar file
-        activity.Call("runOnUiThread", new AndroidJavaRunnable(() => {
-            plugin.Call("GetBitmap", url);
-        }));
+        toget = url;
+        Thread thread = new Thread(ThreadedGet);
+        thread.Start();
+    }
+
+    public void ThreadedGet()
+    {
+	    plugin.Call("GetBitmap", toget);
     }
 }
