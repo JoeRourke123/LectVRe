@@ -122,14 +122,20 @@ public class SocketHandler : MonoBehaviour
     private void UpdateRoom(UserMessage message) {
         this.userId = message.user;
         this.roomId = message.roomId;
+
         Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
         UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
-        for(int i = 0; i < seats.Length; i++) {
+        for(int i = 1; i < seats.Length; i++) {
+            bool taken = false;
             for(int j = 0; j < childrenData.Length; j++) {
-                if(childrenData[j].seat != Int32.Parse(seats[i].name)) {
-                    Camera.main.gameObject.GetComponentInParent<Transform>().position = seats[i].position;
-                    return;
+                
+                if(childrenData[j].seat == Int32.Parse(seats[i].name)) {
+                    taken = true; 
                 }
+            }
+            if(!taken) {
+                Camera.main.gameObject.transform.parent.position = seats[i].position;
+                return;
             }
         }
     }
@@ -146,7 +152,6 @@ public class SocketHandler : MonoBehaviour
             if(child != null) {
                 child.gameObject.name = message.username;
                 child.gameObject.transform.position = message.toVector3();
-                Debug.Log(message.toVector3());
                 Vector3 newRotation = child.gameObject.transform.eulerAngles;
                 newRotation.y = message.getAngle();
                 child.gameObject.transform.eulerAngles = newRotation;
@@ -154,12 +159,14 @@ public class SocketHandler : MonoBehaviour
             else {
                 GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
                 UserData data = newChild.GetComponent<UserData>();
+
                 Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
                 foreach(Transform seat in seats) {
                     if(seat.position == newChild.transform.position) {
                         data.seat = Int32.Parse(seat.gameObject.name);
                     }
                 }
+
                 data.username = message.username;
                 data.user = message.user;
             }
