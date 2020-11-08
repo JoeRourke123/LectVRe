@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R58N12F7E8W",
         "name": "space.lectvre",
-        "processId": 7610,
+        "processId": 24015,
         "exited": true
     },
     "m_SelectedPriority": 0,
@@ -43,6 +43,12 @@
             "name": "space.lectvre",
             "processId": 7610,
             "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 24015,
+            "exited": true
         },
         {
             "deviceId": "43cada259805",
