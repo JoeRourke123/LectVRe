@@ -18,6 +18,8 @@ public class Customisation : MonoBehaviour
     public Material[] colour;
     private int current;
 
+    private int[] data = new int[6];
+
     public void SwitchHair() {
         if (currentHair == hair.Length - 1) {
             currentHair = 0;
@@ -25,12 +27,13 @@ public class Customisation : MonoBehaviour
             currentHair ++;
         }
         for (int i = 0; i < hair.Length; i++) {
-            if (i ==  currentHair) {
+            if (i == currentHair) {
                 hair[i].SetActive(true);
             } else {
                 hair[i].SetActive(false);
             }
         }
+        data[4] = currentHair;
     }
 
     public void SwitchHairBack() {
@@ -46,6 +49,7 @@ public class Customisation : MonoBehaviour
                 hair[i].SetActive(false);
             }
         }
+        data[4] = currentHair;
     }
 
     public void SwitchFace() {
@@ -55,6 +59,7 @@ public class Customisation : MonoBehaviour
             currentFace ++;
         }
         head.GetComponent<Renderer>().material = face[currentFace];
+        data[5] = currentFace;
     }
 
     public void SwitchFaceBack() {
@@ -64,6 +69,7 @@ public class Customisation : MonoBehaviour
             currentFace --;
         }
         head.GetComponent<Renderer>().material = face[currentFace];
+        data[5] = currentFace;
     }
 
     public void Switch(string part) {
@@ -93,6 +99,11 @@ public class Customisation : MonoBehaviour
                 component.material = colour[colourIndex];
             }
         }
+        if (part == "Torso") {
+            data[2] = colourIndex;
+        } else if (part == "Legs") {
+            data[3] = colourIndex;
+        }
     }
 
     public void ChangeSkinColour(int colourIndex) {
@@ -102,6 +113,7 @@ public class Customisation : MonoBehaviour
                 component.material = skinColour[colourIndex];
             }
         }
+        data[1] = colourIndex;
     }
 
     public void ChangeHairColour(int colourIndex) {
@@ -110,6 +122,13 @@ public class Customisation : MonoBehaviour
             if(component.tag == "Hair") {
                 component.material = hairColour[colourIndex];
             }
+        }
+        data[0] = colourIndex;
+    }
+
+    public void PrintData() {
+        for (int i = 0; i < 6; i ++) {
+            Debug.Log(data[i]);
         }
     }
 
