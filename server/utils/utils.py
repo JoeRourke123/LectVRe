@@ -3,14 +3,12 @@ from random import choice
 
 
 def get_free_seat(lecture: Lecture):
-    seats = [i for i in range(9)]
+    seats = []
 
-    for student in lecture.students:
-        if student.seat in seats:
-            print("Removing " + str(student.seat))
-            seats.remove(student.seat)
+    for i in range(9):
+        if not any(i == s.seat for s in lecture.students):
+            seats.append(i)
 
     chosen_seat = choice(seats)
-    location = (0,0,0,0)
 
-    return chosen_seat, location
+    return chosen_seat

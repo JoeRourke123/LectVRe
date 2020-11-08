@@ -20,7 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9568722b-7c75-4bf4-8258-7a55ecf8a55e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/TestWebview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/TestWebview.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/TestWebview.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/TestWebview.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TextMesh Pro.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjectSettings/AndroidLogcatSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectSettings/AndroidLogcatSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +36,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Scripts/TestWebview.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/TestWebview.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/UnityThread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/RecMessage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/WebController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/UnityThread.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/AgoraChat.cs" />
         <option value="$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" />
+        <option value="$PROJECT_DIR$/Scripts/WebController.cs" />
+        <option value="$PROJECT_DIR$/Scripts/TestWebview.cs" />
       </list>
     </option>
   </component>
@@ -49,6 +62,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -89,5 +103,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="120" y="145" width="1200" height="581" key="VCS.FileHistoryDialog" timestamp="1604828956736">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state x="120" y="145" width="1200" height="581" key="VCS.FileHistoryDialog/0.25.1440.821@0.25.1440.821" timestamp="1604828956736" />
   </component>
 </project>
