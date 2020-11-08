@@ -116,7 +116,9 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                 room: Lecture = self.rooms[message['room']]
                 self.user_room[user.id] = room
 
-                user_obj: Student = Student(id=user.id, lecture=room, seat=get_free_seat(room), **message)
+                seat_no = get_free_seat(room)
+                print(seat_no)
+                user_obj: Student = Student(id=user.id, lecture=room, seat=seat_no, **message)
                 self.users[scope_user] = user_obj
 
                 self.rooms[message['room']].students.append(user_obj)
@@ -127,10 +129,12 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                     "type": "join",
                     "user": user.id,
                     "username": user_obj.username,
-                    "seat": user.seat,
+                    "seat": seat_no,
                     "minifig": user_obj.minifig,
                 }
 
+                # Changes room to user so that only the user receives the join message
+                room = user_obj.id
                 print(return_data)
         elif message['type'] == "create_room":
             user_obj: Lecturer = Lecturer(id=user.id, **message)

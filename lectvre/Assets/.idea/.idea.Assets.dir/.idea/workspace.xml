@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9568722b-7c75-4bf4-8258-7a55ecf8a55e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../server/server/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/server/consumers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
