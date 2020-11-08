@@ -127,7 +127,8 @@ public class SocketHandler : MonoBehaviour
         if(message.user != this.userId) {
             UserData child = null;
             foreach(UserData userData in childrenData) {
-                if((child = userData).id == message.user) {
+                if(userData.id == message.user) {
+                    child = userData;
                     break;
                 }
             }
@@ -144,7 +145,6 @@ public class SocketHandler : MonoBehaviour
                 
                 data.name = message.name;
                 data.id = message.user;
-                newChild.name = message.name;
             }
         }
     }
