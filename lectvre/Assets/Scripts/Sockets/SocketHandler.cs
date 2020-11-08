@@ -109,9 +109,13 @@ public class SocketHandler : MonoBehaviour
             UpdateRoom(um);
             return um;
             case "create_room":
-            default:
             RoomJoin rj = JsonUtility.FromJson<RoomJoin>(message);            
             return rj;
+            default:
+            case "leave":
+            UserData ud = JsonUtility.FromJson<UserData>(message);
+            RemoveUser(ud);
+            return ud;
         }
     }
     private void UpdateRoom(UserMessage message) {
@@ -123,7 +127,7 @@ public class SocketHandler : MonoBehaviour
         if(message.user != this.userId) {
             UserData child = null;
             foreach(UserData userData in childrenData) {
-                if(userData.id == message.user) {
+                if(userData.user == message.user) {
                     child = userData;
                     break;
                 }
@@ -141,7 +145,17 @@ public class SocketHandler : MonoBehaviour
                 UserData data = newChild.GetComponent<UserData>();
                 
                 data.username = message.username;
-                data.id = message.user;
+                data.user = message.user;
+            }
+        }
+    }
+
+    private void RemoveUser(UserData userData) {
+        UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
+        foreach(UserData ud in childrenData) {
+            if(ud.user == userData.user) {
+                Destroy(ud.gameObject);
+                return;
             }
         }
     }
