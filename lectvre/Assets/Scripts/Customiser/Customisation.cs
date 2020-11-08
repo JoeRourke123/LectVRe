@@ -12,6 +12,12 @@ public class Customisation : MonoBehaviour
     public GameObject head;
     private int currentFace;
 
+    public Material[] skinColour;
+    public Material[] hairColour;
+    
+    public Material[] colour;
+    private int current;
+
     public void SwitchHair() {
         if (currentHair == hair.Length - 1) {
             currentHair = 0;
@@ -58,6 +64,53 @@ public class Customisation : MonoBehaviour
             currentFace --;
         }
         head.GetComponent<Renderer>().material = face[currentFace];
+    }
+
+    public void Switch(string part) {
+        if (current == colour.Length - 1) {
+            current = 0;
+            ChangeColour(current, part);
+        } else {
+            current ++;
+            ChangeColour(current, part);
+        }
+    }
+
+    public void SwitchBack(string part) {
+        if (current == 0) {
+            current = colour.Length - 1;
+            ChangeColour(current, part);
+        } else {
+            current --;
+            ChangeColour(current, part);
+        }
+    }
+
+    public void ChangeColour(int colourIndex, string part) {
+        Renderer[] components = gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer component in components) {
+            if(component.tag == part) {
+                component.material = colour[colourIndex];
+            }
+        }
+    }
+
+    public void ChangeSkinColour(int colourIndex) {
+        Renderer[] components = gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer component in components) {
+            if(component.tag == "Skin") {
+                component.material = skinColour[colourIndex];
+            }
+        }
+    }
+
+    public void ChangeHairColour(int colourIndex) {
+        Renderer[] components = gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer component in components) {
+            if(component.tag == "Hair") {
+                component.material = hairColour[colourIndex];
+            }
+        }
     }
 
 }
