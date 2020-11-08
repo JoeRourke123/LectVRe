@@ -6,12 +6,12 @@ using System;
 [Serializable]
 public class RecMessage : Message
 {
-    public string id;
+    public string user;
     public string name;
 
-    public RecMessage(float x, float y, float z, float r, string name, MinifigureData minifigureData, string id) : base(x, y, x, r, minifigureData)
+    public RecMessage(string type, float x, float y, float z, float r, string name, MinifigureData minifigureData, string user) : base(type, x , y, z, r, minifigureData)
     {
-        this.id = id;
+        this.user = user;
         this.name = name;
     }
 
@@ -19,7 +19,7 @@ public class RecMessage : Message
         
     }
     new public string toJson() {
-        return $"{{\"id\":\"{id}\", \"name\":\"{name}\", \"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"minifig\":{minifigureData.toJson()}}}";
+        return $"{{\"type\":\"{type}\", \"user\":\"{user}\", \"name\":\"{name}\", \"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"minifig\":{minifigureData.toJson()}}}";
     }
 }
     

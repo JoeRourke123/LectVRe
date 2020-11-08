@@ -1,20 +1,13 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class MainMessage : IMessageInterface
 {
     public string type;
-    public string message;
-    public IMessageInterface finalMessage;
 
-    public MainMessage(string type, string message) {
+    public MainMessage(string type) {
         this.type = type;
-        this.message = message;
-    }
-
-    public MainMessage(string type, IMessageInterface finalMessage) {
-        this.type = type;
-        this.finalMessage = finalMessage; 
     }
 
     public MainMessage() {
@@ -22,7 +15,7 @@ public class MainMessage : IMessageInterface
     }
 
     public string toJson() {
-        return $"{{\"type\":\"{type}\", \"message\":{finalMessage.toJson()}}}";
+        return $"{{\"type\":\"{type}\"}}";
     }
 }
     

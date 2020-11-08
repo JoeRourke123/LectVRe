@@ -50,62 +50,83 @@ public class SocketHandler : MonoBehaviour
     }
     private async Task JoinRoom() {
         Debug.Log("Joining Room...");
-        await Send(new MainMessage("join", new UserMessage(roomId, name, "join", new MinifigureData(1, 1, 1, 1 ,1, 1))));
+        await Send(new UserMessage("join", roomId, name, "join", new MinifigureData(1, 1, 1, 1 ,1, 1)));
         Debug.Log("Roomed Joined");
-        InvokeRepeating("SendPosition", 0.02f, INTERVAL);
+        InvokeRepeating("SendPosition", 0.5f, INTERVAL);
         return;
     }
     private async void SendPosition()
     {
         Message msg = new Message(
+            "position",
             Camera.main.transform.position.x,
             Camera.main.transform.position.y,
             Camera.main.transform.position.z,
             Camera.main.transform.eulerAngles.y,
             new MinifigureData(0,0,0,0,0,0)
         );
-        await Send(new MainMessage("position", msg));
+        Debug.Log(msg.toJson());
+        await Send(msg);
     }
 
     private async Task Send(IMessageInterface message) {
         if(ws.State == WebSocketState.Open) 
         {
-            await ws.SendText(message.toJson());
-            Debug.Log("Message Sent: " + message.toJson());
+            if(message is Message) {
+                await ws.SendText(((Message)message).toJson());
+                Debug.Log("Message Sent: " + ((Message)message).toJson());
+            }
+            else if(message is RecMessage) {
+                await ws.SendText(((RecMessage)message).toJson());
+                Debug.Log("Message Sent: " + ((RecMessage)message).toJson());
+            }
+            else if(message is RoomJoin) {
+                await ws.SendText(((RoomJoin)message).toJson());
+                Debug.Log("Message Sent: " + ((RoomJoin)message).toJson());
+            }
+            else if(message is UserMessage) {
+                await ws.SendText(((UserMessage)message).toJson());
+                Debug.Log("Message Sent: " + ((UserMessage)message).toJson());
+            }
+            else {
+                await ws.SendText(((IMessageInterface)message).toJson());
+                Debug.Log("Message Sent: " + ((IMessageInterface)message).toJson());
+            }
         }
         return;
     }
     private IMessageInterface Receive(byte[] bytes) {
-        Debug.Log("Bytes: " + bytes);
+        // Debug.Log("Bytes: " + bytes);
         string message = System.Text.Encoding.UTF8.GetString(bytes);
-        Debug.Log("OnMessage! " + message);
+        Debug.Log("OnMessage: " + message);
 
         MainMessage mainMessage = JsonUtility.FromJson<MainMessage>(message);
+        Debug.Log("Initial parse: "+ mainMessage.type);
         switch(mainMessage.type) {
             case "position":
-            RecMessage rm = JsonUtility.FromJson<RecMessage>(mainMessage.message);
-            mainMessage.finalMessage = rm;
+            RecMessage rm = JsonUtility.FromJson<RecMessage>(message);
+            Debug.Log("Second parse: " + rm + rm.type);
             UpdateUsers(rm);
-            break;
+            return rm;
             case "join":
-            UserMessage um = JsonUtility.FromJson<UserMessage>(mainMessage.message);
-            mainMessage.finalMessage = um;
-            break;
+            UserMessage um = JsonUtility.FromJson<UserMessage>(message);
+            UpdateRoom(um);
+            return um;
             case "create_room":
-            RoomJoin rj = JsonUtility.FromJson<RoomJoin>(mainMessage.message);
-            mainMessage.finalMessage = rj;
-            break;
+            default:
+            RoomJoin rj = JsonUtility.FromJson<RoomJoin>(message);            
+            return rj;
         }
-        return mainMessage;
     }
     private void UpdateRoom(UserMessage message) {
+        Debug.Log("NEW MESSAGE: " + message);
         this.userId = message.user;
         this.roomId = message.roomId;
     }
     private void UpdateUsers(RecMessage message) {
-        if(message.id != this.userId) {
-            if(users.ContainsKey(message.id)) {
-                GameObject user = users[message.id].gameObject;
+        if(message.user != this.userId) {
+            if(users.ContainsKey(message.user)) {
+                GameObject user = users[message.user].gameObject;
                 user.transform.position = message.toVector3();
 
                 Vector3 newRotation = user.transform.eulerAngles;
@@ -113,7 +134,7 @@ public class SocketHandler : MonoBehaviour
                 user.transform.eulerAngles = newRotation;
             }
             else {
-                users.Add(message.id, new UserData(message.id, message.name, Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform)));
+                users.Add(message.user, new UserData(message.user, message.name, Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform)));
             }
         }
     }

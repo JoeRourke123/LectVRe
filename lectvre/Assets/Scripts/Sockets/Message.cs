@@ -4,7 +4,7 @@ using UnityEngine;
 * Class for containing data for repeatably sending the player position
 **/
 [Serializable]
-public class Message : IMessageInterface
+public class Message : MainMessage
 {
     public float x;
     public float y;
@@ -12,7 +12,7 @@ public class Message : IMessageInterface
     public float r;
     public MinifigureData minifigureData;
 
-    public Message(float x, float y, float z, float r, MinifigureData minifigureData) {
+    public Message(string type, float x, float y, float z, float r, MinifigureData minifigureData) : base(type) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -24,8 +24,8 @@ public class Message : IMessageInterface
 
     }
 
-    public string toJson() {
-        return $"{{\"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"minifig\":{minifigureData.toJson()}}}";
+    new public string toJson() {
+        return $"{{\"type\":\"{type}\", \"x\":{x}, \"y\":{y}, \"z\":{z}, \"r\":{r}, \"minifig\":{minifigureData.toJson()}}}";
     }
 
     public Vector3 toVector3() {
