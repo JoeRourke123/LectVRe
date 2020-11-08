@@ -7,7 +7,9 @@ public class GlobalControl : MonoBehaviour
     public static GlobalControl Instance;
     public int[] data = new int[6];
     public string name;
-    public int code;
+    public string code;
+    public string leaderName;
+    public string URL;
 
     void Awake () {
         if (Instance == null) {

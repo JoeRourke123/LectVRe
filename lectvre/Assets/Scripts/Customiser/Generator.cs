@@ -21,6 +21,8 @@ public class Generator : MonoBehaviour
 
     public void Change() {
         data = GlobalControl.Instance.data;
+        Debug.Log(GlobalControl.Instance.name);
+        Debug.Log(GlobalControl.Instance.code);
         ChangeHair();
         ChangeFace();
         ChangeColour("Torso");
