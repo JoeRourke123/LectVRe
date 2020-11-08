@@ -2880,7 +2880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6578368669875495412}
   - component: {fileID: 2063003859036049570}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3657,7 +3657,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6594834582409852836}
-  - component: {fileID: 5822696577884515601}
   m_Layer: 0
   m_Name: Minifig
   m_TagString: Untagged
@@ -3681,18 +3680,6 @@ Transform:
   m_Father: {fileID: 8176171266152280945}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5822696577884515601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5822696577884515614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045554b131268f546a4fcb40e7bd0a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5874055799131556848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,7 +4808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074159570291558034}
   - component: {fileID: 8894271786046264963}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5339,7 +5326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b0f3a462cff494ea29c7e9eef06fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  username: 
   id: 
 --- !u!1 &8205095075946508284
 GameObject:
