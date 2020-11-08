@@ -3,7 +3,8 @@ class Lecture(object):
         self.id: int = kwargs.get("id", 0)
         self.lecturer: Lecturer = kwargs.get("lecturer", None)
         self.students: list = []
-
+        self.slideURL: str = kwargs.get("slideURL", "")
+        self.slide: int = 1
 
 class Lecturer(object):
     def __init__(self, **kwargs):
