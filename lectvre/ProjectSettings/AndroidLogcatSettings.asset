@@ -1,48 +1,48 @@
 {
     "m_SelectedDeviceId": "R58N12F7E8W",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
-        "exited": false
+        "deviceId": "R58N12F7E8W",
+        "name": "space.lectvre",
+        "processId": 19632,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R58N12F7E8W",
-            "name": "space.lectvre",
-            "processId": 2542,
+            "name": "com.sec.android.app.launcher",
+            "processId": 11871,
             "exited": true
         },
         {
             "deviceId": "R58N12F7E8W",
             "name": "space.lectvre",
-            "processId": 11763,
+            "processId": 17216,
             "exited": true
         },
         {
             "deviceId": "R58N12F7E8W",
             "name": "space.lectvre",
-            "processId": 18650,
-            "exited": true
-        },
-        {
-            "deviceId": "R58N12F7E8W",
-            "name": "space.lectvre",
-            "processId": 20663,
-            "exited": true
-        },
-        {
-            "deviceId": "R58N12F7E8W",
-            "name": "space.lectvre",
-            "processId": 20876,
+            "processId": 28708,
             "exited": true
         },
         {
             "deviceId": "R58N12F7E8W",
             "name": "com.sec.android.app.launcher",
-            "processId": 16065,
+            "processId": 13531,
             "exited": false
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 7713,
+            "exited": true
+        },
+        {
+            "deviceId": "R58N12F7E8W",
+            "name": "space.lectvre",
+            "processId": 19632,
+            "exited": true
         },
         {
             "deviceId": "43cada259805",
@@ -95,7 +95,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": false
+                "m_Selected": true
             },
             {
                 "m_Name": "",
@@ -111,7 +111,7 @@
             },
             {
                 "m_Name": "Unity",
-                "m_Selected": true
+                "m_Selected": false
             },
             {
                 "m_Name": "CRASH",

@@ -4,19 +4,22 @@ using System;
 * Used for creating a new room
 **/
 [Serializable]
-public class RoomJoin : MainMessage
+public class SlideChange : MainMessage
 {
-    public string room;
-    public string user;
+    public int slide;
+    public string slideURL;
 
+    public SlideChange(string type, int slide, string slideURL) : base(type){
+        this.slide = slide;
+        this.slideURL = slideURL;
+    }
 
-
-    public RoomJoin(string type, string room, string user) : base(type){
-        this.room = room;
-        this.user = user;
+    public SlideChange(string type, int slide) : base(type)
+    {
+	    this.slide = slide;
     }
 
     new public string toJson() {
-        return $"{{\"type\":\"{type}\", \"room\":\"{room}\", \"user\":\"{user}\"}}";
+        return $"{{\"type\":\"{type}\", \"slide\":\"{slide}\"}}";
     }
 }

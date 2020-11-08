@@ -13,23 +13,23 @@ public class SocketHandler : MonoBehaviour
     private string roomId = "db1f5";
     private string username = "Fuck You";
     public GameObject userObject;
-    
+
     // Start is called before the first frame update
     async void Start()
     {
         ws = new WebSocket(serverURL);
 
-        ws.OnOpen += () => 
+        ws.OnOpen += () =>
         {
             Debug.Log("Connected");
         };
 
-        ws.OnError += (e) => 
+        ws.OnError += (e) =>
         {
             Debug.Log("Error: " + e);
         };
 
-        ws.OnClose += (e) => 
+        ws.OnClose += (e) =>
         {
             Debug.Log("Connection Closed");
         };
@@ -69,7 +69,7 @@ public class SocketHandler : MonoBehaviour
     }
 
     private async Task Send(IMessageInterface message) {
-        if(ws.State == WebSocketState.Open) 
+        if(ws.State == WebSocketState.Open)
         {
             if(message is Message) {
                 await ws.SendText(((Message)message).toJson());
@@ -106,11 +106,16 @@ public class SocketHandler : MonoBehaviour
             return rm;
             case "join":
             UserMessage um = JsonUtility.FromJson<UserMessage>(message);
+            if (!String.IsNullOrEmpty(um.slideURL))
+            {
+	            FetchSlide(um.slideURL, um.slide);
+            }
             UpdateRoom(um);
             return um;
-            case "create_room":
-            RoomJoin rj = JsonUtility.FromJson<RoomJoin>(message);            
-            return rj;
+            case "slide":
+	        SlideChange cs = JsonUtility.FromJson<SlideChange>(message);
+	        FetchSlide(cs.slideURL, cs.slide);
+	        return cs;
             default:
             case "leave":
             UserData ud = JsonUtility.FromJson<UserData>(message);
@@ -122,6 +127,11 @@ public class SocketHandler : MonoBehaviour
         this.userId = message.user;
         this.roomId = message.roomId;
         Camera.main.gameObject.transform.parent.position = GameObject.Find("Seats").gameObject.transform.Find(message.seat.ToString()).position;
+    }
+
+    private void FetchSlide(string slideURL, int slide)
+    {
+	    StartCoroutine(GameObject.Find("BoardController").GetComponent<LoadImage>().getImg(slide, slideURL));
     }
     private void UpdateUsers(RecMessage message) {
         UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
@@ -162,7 +172,7 @@ public class SocketHandler : MonoBehaviour
     {
         await ws.Close();
     }
-    
+
 }
 
 

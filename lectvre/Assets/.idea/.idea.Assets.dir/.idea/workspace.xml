@@ -20,12 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9568722b-7c75-4bf4-8258-7a55ecf8a55e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Scripts/Sockets/SlideChange.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/TestWebview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/TestWebview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/TestWebview.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/TestWebview.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TextMesh Pro.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Sockets/RoomJoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Sockets/RoomJoin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Sockets/UserMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Sockets/UserMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/TestWebview.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/TestWebview.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/WebController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/WebController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProjectSettings/AndroidLogcatSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjectSettings/AndroidLogcatSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../server/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../server/server/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/server/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../server/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../server/views/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/views/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +43,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Scripts/TestWebview.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/BackgroundWorker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/UserData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/UserMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/TestWebview.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/UnityThread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/RoomJoin.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Sockets/RecMessage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Scripts/WebController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/LoadImage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/UnityAndroidWebviewToTexture-master/Assets/Scripts/UnityThread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/Message.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/SlideChange.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Scripts/WebController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/UnityThread.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -50,8 +63,15 @@
       <list>
         <option value="$PROJECT_DIR$/AgoraChat.cs" />
         <option value="$PROJECT_DIR$/Scripts/MainMenu/MainMenuController.cs" />
+        <option value="$PROJECT_DIR$/Scripts/ReloadJob.cs" />
         <option value="$PROJECT_DIR$/Scripts/WebController.cs" />
         <option value="$PROJECT_DIR$/Scripts/TestWebview.cs" />
+        <option value="$PROJECT_DIR$/Scripts/Sockets/RoomJoin.cs" />
+        <option value="$PROJECT_DIR$/Scripts/Sockets/SlideChange.cs" />
+        <option value="$PROJECT_DIR$/Scripts/LoadImage.cs" />
+        <option value="$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" />
+        <option value="$PROJECT_DIR$/Scripts/Sockets/UserMessage.cs" />
+        <option value="$PROJECT_DIR$/Scripts/Sockets/LoadImage.cs" />
       </list>
     </option>
   </component>
@@ -105,9 +125,21 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="120" y="145" width="1200" height="581" key="VCS.FileHistoryDialog" timestamp="1604828956736">
+    <state x="466" y="276" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1604835743262">
       <screen x="0" y="25" width="1440" height="821" />
     </state>
-    <state x="120" y="145" width="1200" height="581" key="VCS.FileHistoryDialog/0.25.1440.821@0.25.1440.821" timestamp="1604828956736" />
+    <state x="466" y="276" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.25.1440.821@0.25.1440.821" timestamp="1604835743262" />
+    <state x="120" y="145" width="1200" height="581" key="VCS.FileHistoryDialog" timestamp="1604855228981">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state x="120" y="145" width="1200" height="581" key="VCS.FileHistoryDialog/0.25.1440.821@0.25.1440.821" timestamp="1604855228981" />
+    <state x="392" y="190" width="655" height="490" key="find.popup" timestamp="1604862412623">
+      <screen x="0" y="25" width="1440" height="819" />
+    </state>
+    <state x="392" y="190" width="655" height="490" key="find.popup/0.25.1440.819@0.25.1440.819" timestamp="1604862412623" />
+    <state x="383" y="167" width="672" height="678" key="search.everywhere.popup" timestamp="1604851042265">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state x="383" y="167" width="672" height="678" key="search.everywhere.popup/0.25.1440.821@0.25.1440.821" timestamp="1604851042265" />
   </component>
 </project>
