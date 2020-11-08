@@ -131,7 +131,7 @@ public class SocketHandler : MonoBehaviour
                     break;
                 }
             }
-            if((child != null) {
+            if(child != null) {
                 child.gameObject.name = message.name;
                 child.gameObject.transform.position = message.toVector3();
                 Vector3 newRotation = child.gameObject.transform.eulerAngles;
