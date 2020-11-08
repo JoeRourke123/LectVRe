@@ -15,12 +15,17 @@ class LectvreConsumer(AsyncWebsocketConsumer):
     users = {}
     user_room = {}
 
-    async def connect(self):
-
+    def get_scope_id(self):
         scope_user = None
         for header in self.scope['headers']:
             if header[0] == b'sec-websocket-key':
                 scope_user = str(header[1].decode('utf-8'))
+                break
+
+        return scope_user
+
+    async def connect(self):
+        scope_user = self.get_scope_id()
 
         if "db1f5" not in self.rooms:
             self.rooms["db1f5"] = Lecture(id="db1f5", lecturer=Lecturer(id=self.gen_user_id(), name="Name"))
@@ -50,10 +55,7 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         # Leave room group
-        scope_user = None
-        for header in self.scope['headers']:
-            if header[0] == b'sec-websocket-key':
-                scope_user = str(header[1].decode('utf-8'))
+        scope_user = self.get_scope_id()
 
         user = self.users[scope_user]
 
@@ -89,14 +91,9 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data: str):
-        scope_user = None
-        for header in self.scope['headers']:
-            if header[0] == b'sec-websocket-key':
-                scope_user = str(header[1].decode('utf-8'))
+        scope_user = self.get_scope_id()
 
         message = ast.literal_eval(str(text_data).replace('\x00', ''))
-        message['message']['type'] = message['type']
-        message = message['message']
 
         user: Student = self.users[scope_user]
 
@@ -123,33 +120,33 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
                 await self.add_to_room(user_obj, room)
 
+                return_data = {
+                    "type": "join",
+                    "user": user.id,
+                    "name": user_obj.name,
+                    "seat": user_obj.seat,
+                    "minifig": user_obj.minifig,
+                }
+
+                print("USER_JOINED!!!!! " + str(return_data))
+
                 await self.channel_layer.group_send(
                     room.id,
                     {
                         'type': 'update',
-                        'message': {
-                            "type": "new_user",
-                            "message": {
-                                "user": user.id,
-                                "name": user_obj.name,
-                                "seat": user_obj.seat,
-                                "minifig": user_obj.minifig,
-                            }
-                        }
+                        'message': return_data
                     }
                 )
 
                 return_data = {
                     "type": "position",
-                    "message": {
-                        "user": user_obj.id,
-                        "name": user_obj.name,
-                        "x": user_obj.position[0],
-                        "y": user_obj.position[1],
-                        "z": user_obj.position[2],
-                        "r": user_obj.position[3],
-                        "minifig": user_obj.minifig,
-                    }
+                    "user": user_obj.id,
+                    "name": user_obj.name,
+                    "x": user_obj.position[0],
+                    "y": user_obj.position[1],
+                    "z": user_obj.position[2],
+                    "r": user_obj.position[3],
+                    "minifig": user_obj.minifig,
                 }
 
                 print(return_data)
@@ -163,10 +160,8 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
             return_data = {
                 "type": "create_room",
-                "message": {
-                    "room": room.id,
-                    "user": user.id,
-                }
+                "room": room.id,
+                "user": user.id,
             }
 
             await self.add_to_room(user_obj, room)
@@ -182,17 +177,15 @@ class LectvreConsumer(AsyncWebsocketConsumer):
 
             return_data = {
                 "type": "hand_up",
-                "message": {
-                    "user": user.id,
-                    "hand_up": user.hand_up
-                }
+                "user": user.id,
+                "hand_up": user.hand_up
             }
 
         elif message['type'] == "note_change":
             pass
         elif message['type'] == "position":
             user_obj = self.users[scope_user]
-            return_data = {**message, "user": user.id, "minifig": user_obj.minifig}
+            return_data = {**message, "user": user_obj.id, "minifig": user_obj.minifig}
 
         print("Response: " + str(return_data))
 

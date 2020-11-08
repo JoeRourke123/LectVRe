@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9568722b-7c75-4bf4-8258-7a55ecf8a55e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Assets.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../server/server/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/server/consumers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../server/server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/server/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../server/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../server/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Scripts/Sockets/SocketHandler.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
