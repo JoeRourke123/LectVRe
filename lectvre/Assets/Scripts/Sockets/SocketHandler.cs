@@ -123,21 +123,7 @@ public class SocketHandler : MonoBehaviour
         this.userId = message.user;
         this.roomId = message.roomId;
 
-        Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
-        UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
-        for(int i = 1; i < seats.Length; i++) {
-            bool taken = false;
-            for(int j = 0; j < childrenData.Length; j++) {
-                
-                if(childrenData[j].seat == Int32.Parse(seats[i].name)) {
-                    taken = true; 
-                }
-            }
-            if(!taken) {
-                Camera.main.gameObject.transform.parent.position = seats[i].position;
-                return;
-            }
-        }
+        Camera.main.gameObject.transform.parent.position = GameObject.Find("Seats").gameObject.transform.Find(message.seat.ToString()).position;
     }
     private void UpdateUsers(RecMessage message) {
         UserData[] childrenData = gameObject.GetComponentsInChildren<UserData>();
@@ -159,18 +145,6 @@ public class SocketHandler : MonoBehaviour
             else {
                 GameObject newChild = Instantiate(userObject, message.toVector3(), message.toQuaternion(), gameObject.transform);
                 UserData data = newChild.GetComponent<UserData>();
-
-                Transform[] seats = GameObject.Find("Seats").GetComponentsInChildren<Transform>();
-                foreach(Transform seat in seats) {
-                    if(
-                        seat.position.x  - newChild.transform.position.x < 3 &&
-                        seat.position.y - newChild.transform.position.y < 3 &&
-                        seat.position.z - newChild.transform.position.z < 3
-                    ) {
-                        data.seat = Int32.Parse(seat.gameObject.name);
-                    }
-                }
-
                 data.username = message.username;
                 data.user = message.user;
             }
