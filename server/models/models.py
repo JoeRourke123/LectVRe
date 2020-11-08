@@ -24,3 +24,4 @@ class Student(Lecturer):
         self.notes: list = []
         self.hand_up: bool = False
         self.depressed: bool = True
+        self.seat: int = kwargs.get("seat", 0)

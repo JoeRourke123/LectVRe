@@ -3,7 +3,7 @@ from random import choice
 
 
 def get_free_seat(lecture: Lecture):
-    seats = [i for i in range(1, 27)]
+    seats = [i for i in range(9)]
 
     for student in lecture.students:
         seats.remove(student.seat)
