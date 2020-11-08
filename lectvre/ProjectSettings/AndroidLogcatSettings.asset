@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "R58N12F7E8W",
+    "m_SelectedDeviceId": "9889db364f4f4f3851",
     "m_SelectedPackage": {
-        "deviceId": "R58N12F7E8W",
-        "name": "space.lectvre",
-        "processId": 24015,
-        "exited": true
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -39,45 +39,9 @@
             "exited": false
         },
         {
-            "deviceId": "R58N12F7E8W",
-            "name": "space.lectvre",
-            "processId": 7610,
-            "exited": false
-        },
-        {
-            "deviceId": "R58N12F7E8W",
-            "name": "space.lectvre",
-            "processId": 24015,
-            "exited": true
-        },
-        {
             "deviceId": "43cada259805",
             "name": "space.lectvre",
             "processId": 29164,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 26998,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 31422,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 5457,
-            "exited": true
-        },
-        {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "space.lectvre",
-            "processId": 7908,
             "exited": true
         },
         {
@@ -91,6 +55,30 @@
             "name": "com.sec.android.app.launcher",
             "processId": 30869,
             "exited": false
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 11174,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 22043,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 2930,
+            "exited": true
+        },
+        {
+            "deviceId": "9889db364f4f4f3851",
+            "name": "space.lectvre",
+            "processId": 5272,
+            "exited": true
         }
     ],
     "m_Tags": {
