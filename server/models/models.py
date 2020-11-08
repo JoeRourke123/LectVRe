@@ -8,7 +8,7 @@ class Lecture(object):
 class Lecturer(object):
     def __init__(self, **kwargs):
         self.id: int = kwargs.get("id", 0)
-        self.name: str = kwargs.get("name", "Jimmy Johnjohn")
+        self.username: str = kwargs.get("name", "Jimmy Johnjohn")
         self.lecture: Lecture = kwargs.get("lecture", None)
         self.minifig: dict = kwargs.get("minifig", {
             "hair": None,
@@ -24,3 +24,4 @@ class Student(Lecturer):
         self.notes: list = []
         self.hand_up: bool = False
         self.depressed: bool = True
+        self.seat: int = kwargs.get("seat", 0)

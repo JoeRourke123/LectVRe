@@ -63,3 +63,5 @@ ExportedObj/
 */.DS_Store
 */.IDEA/
 */.vscode/
+
+*/AndroidLogcatSettings.asset
