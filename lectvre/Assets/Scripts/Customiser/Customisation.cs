@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Customisation : MonoBehaviour
 {
@@ -131,6 +132,7 @@ public class Customisation : MonoBehaviour
         for (int i = 0; i < 6; i ++) {
             Debug.Log("Print Data: " + i + " " + GlobalControl.Instance.data[i]);
         }
+        SceneManager.LoadScene(sceneName:"Main");
     }
 
 }
