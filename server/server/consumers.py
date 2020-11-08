@@ -127,7 +127,6 @@ class LectvreConsumer(AsyncWebsocketConsumer):
                     "type": "join",
                     "user": user.id,
                     "name": user_obj.name,
-                    "seat": user_obj.seat,
                     "minifig": user_obj.minifig,
                 }
 
