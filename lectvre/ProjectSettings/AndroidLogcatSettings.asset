@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "9889db364f4f4f3851",
+    "m_SelectedDeviceId": "43cada259805",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "43cada259805",
+        "name": "space.lectvre",
+        "processId": 15021,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -41,44 +41,86 @@
         {
             "deviceId": "43cada259805",
             "name": "space.lectvre",
-            "processId": 29164,
+            "processId": 23662,
             "exited": true
         },
         {
-            "deviceId": "9889db364f4f4f3851",
+            "deviceId": "43cada259805",
             "name": "space.lectvre",
-            "processId": 18871,
+            "processId": 10497,
             "exited": true
         },
         {
-            "deviceId": "9889db364f4f4f3851",
-            "name": "com.sec.android.app.launcher",
-            "processId": 30869,
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 11390,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "com.android.launcher3",
+            "processId": 2852,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 12142,
+            "exited": true
+        },
+        {
+            "deviceId": "43cada259805",
+            "name": "space.lectvre",
+            "processId": 15021,
             "exited": false
         },
         {
-            "deviceId": "9889db364f4f4f3851",
+            "deviceId": "89U4C18816006131",
+            "name": "com.huawei.android.launcher",
+            "processId": 1856,
+            "exited": false
+        },
+        {
+            "deviceId": "89U4C18816006131",
             "name": "space.lectvre",
-            "processId": 11174,
+            "processId": 17813,
             "exited": true
         },
         {
-            "deviceId": "9889db364f4f4f3851",
+            "deviceId": "89U4C18816006131",
             "name": "space.lectvre",
-            "processId": 22043,
+            "processId": 22249,
             "exited": true
         },
         {
-            "deviceId": "9889db364f4f4f3851",
+            "deviceId": "89U4C18816006131",
             "name": "space.lectvre",
-            "processId": 2930,
+            "processId": 24275,
             "exited": true
         },
         {
-            "deviceId": "9889db364f4f4f3851",
+            "deviceId": "89U4C18816006131",
             "name": "space.lectvre",
-            "processId": 5272,
+            "processId": 27047,
             "exited": true
+        },
+        {
+            "deviceId": "89U4C18816006131",
+            "name": "space.lectvre",
+            "processId": 23368,
+            "exited": true
+        },
+        {
+            "deviceId": "89U4C18816006131",
+            "name": "space.lectvre",
+            "processId": 23792,
+            "exited": false
+        },
+        {
+            "deviceId": "89U4C18816006131",
+            "name": "space.lectvre",
+            "processId": 26529,
+            "exited": false
         }
     ],
     "m_Tags": {
@@ -89,7 +131,7 @@
             },
             {
                 "m_Name": "No Filter",
-                "m_Selected": false
+                "m_Selected": true
             },
             {
                 "m_Name": "",
@@ -105,7 +147,7 @@
             },
             {
                 "m_Name": "Unity",
-                "m_Selected": true
+                "m_Selected": false
             },
             {
                 "m_Name": "CRASH",
@@ -114,7 +156,7 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 255.0,
+        "MemoryWindowHeight": 300.0,
         "MemoryWindowWidth": 170.0,
         "MemoryTypeEnabled": [
             true,
